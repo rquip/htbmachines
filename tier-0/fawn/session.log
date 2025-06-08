@@ -1,0 +1,138 @@
+Script started on 2025-05-31 12:56:10-04:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="126" LINES="22"]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mping $ip
+[?2004lping: usage error: Destination address required
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.228.253
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.228.253[C[C[C[C[C[C[9Pping $ip
+[?2004lPING 10.129.228.253 (10.129.228.253) 56(84) bytes of data.
+64 bytes from 10.129.228.253: icmp_seq=1 ttl=63 time=1288 ms
+64 bytes from 10.129.228.253: icmp_seq=2 ttl=63 time=278 ms
+64 bytes from 10.129.228.253: icmp_seq=3 ttl=63 time=96.9 ms
+^C
+--- 10.129.228.253 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2011ms
+rtt min/avg/max/mdev = 96.896/554.492/1288.239/524.098 ms, pipe 2
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sS $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-05-31 12:57 EDT
+Stats: 0:05:46 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 99.99% done; ETC: 13:02 (0:00:00 remaining)
+Stats: 0:05:54 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 99.99% done; ETC: 13:02 (0:00:00 remaining)
+Nmap scan report for 10.129.228.253
+Host is up (0.091s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+21/tcp open  ftp
+
+Nmap done: 1 IP address (1 host up) scanned in 423.92 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnma[K[K[Knv[Kc inv[K[K[K-nv $ip
+[?2004lno port[s] to connect to
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnc -nv $ip 21
+[?2004l(UNKNOWN) [10.129.228.253] 21 (ftp) open
+220 (vsFTPd 3.0.3)
+^C
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sC -sV $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-05-31 13:09 EDT
+Nmap scan report for 10.129.228.253
+Host is up (0.088s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.10.14.179
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+Service Info: OS: Unix
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 16.58 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mma [K[K[Kftip[K[K[Ktp $ip
+[?2004lbash: ftp: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msud[K[K[Kapt install ftp
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  tnftp
+The following NEW packages will be installed:
+  ftp tnftp
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 166 kB of archives.
+After this operation, 319 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+[33m0% [Working][0m            Get:1 https://deb.parrot.sh/parrot lory/main amd64 tnftp amd64 20210827-4+b1 [128 kB]
+[33m0% [1 tnftp 0 B/128 kB 0%][0m[33m                          72% [Working][0m             Get:2 https://deb.parrot.sh/parrot lory/main amd64 ftp all 20210827-4 [37.9 kB]
+[33m72% [2 ftp 0 B/37.9 kB 0%][0m[33m                          100% [Working][0m              Fetched 166 kB in 1s (287 kB/s)
+
+7[0;21r8[1ASelecting previously unselected package tnftp.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 371023 files and directories currently installed.)
+Preparing to unpack .../tnftp_20210827-4+b1_amd64.deb ...
+7[22;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................] 87[22;0f[42m[30mProgress: [ 11%][49m[39m [###########.............................................................................................] 8Unpacking tnftp (20210827-4+b1) ...
+7[22;0f[42m[30mProgress: [ 22%][49m[39m [#######################.................................................................................] 8Selecting previously unselected package ftp.
+Preparing to unpack .../ftp_20210827-4_all.deb ...
+7[22;0f[42m[30mProgress: [ 33%][49m[39m [##################################......................................................................] 8Unpacking ftp (20210827-4) ...
+7[22;0f[42m[30mProgress: [ 44%][49m[39m [##############################################..........................................................] 8Setting up tnftp (20210827-4+b1) ...
+7[22;0f[42m[30mProgress: [ 56%][49m[39m [#########################################################...............................................] 8update-alternatives: using /usr/bin/tnftp to provide /usr/bin/ftp (ftp) in auto mode
+7[22;0f[42m[30mProgress: [ 67%][49m[39m [#####################################################################...................................] 8Setting up ftp (20210827-4) ...
+7[22;0f[42m[30mProgress: [ 78%][49m[39m [################################################################################........................] 87[22;0f[42m[30mProgress: [ 89%][49m[39m [############################################################################################............] 8Processing triggers for man-db (2.11.2-2) ...
+
+7[0;22r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mftp $ip
+[?2004lConnected to 10.129.228.253.
+220 (vsFTPd 3.0.3)
+Name (10.129.228.253:ryebread): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> ls
+229 Entering Extended Passive Mode (|||44209|)
+150 Here comes the directory listing.
+-rw-r--r--    1 0        0              32 Jun 04  2021 flag.txt
+226 Directory send OK.
+ftp> get flag.txt
+local: flag.txt remote: flag.txt
+229 Entering Extended Passive Mode (|||11958|)
+150 Opening BINARY mode data connection for flag.txt (32 bytes).
+  0% |                                                                                 |     0        0.00 KiB/s    --:-- ETA100% |*********************************************************************************|    32       13.91 KiB/s    00:00 ETA
+226 Transfer complete.
+32 bytes received in 00:00 (0.34 KiB/s)
+ftp> exit
+221 Goodbye.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0ms
+[?2004lbash: s: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004lflag.txt  session.log  session.timing
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcat flg[Kag.txt 
+[?2004l035db21c881520061c53e0536e44f815[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/fawn[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+
+Script done on 2025-05-31 13:13:35-04:00 [COMMAND_EXIT_CODE="0"]

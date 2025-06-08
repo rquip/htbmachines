@@ -1,0 +1,731 @@
+Script started on 2025-06-06 18:41:37-04:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="132" LINES="29"]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mping 10.129.103.173
+[?2004lPING 10.129.103.173 (10.129.103.173) 56(84) bytes of data.
+64 bytes from 10.129.103.173: icmp_seq=1 ttl=63 time=78.8 ms
+64 bytes from 10.129.103.173: icmp_seq=2 ttl=63 time=81.0 ms
+64 bytes from 10.129.103.173: icmp_seq=3 ttl=63 time=78.9 ms
+^C
+--- 10.129.103.173 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 78.766/79.560/81.012/1.027 ms
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -T4 -p- --min-parallelism 100 --max-[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kip=10.129.103.173
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -T4 -p- --min-parallelism 100 --max-retries 1 -pM [K[K[KPn -n $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-06 18:44 EDT
+Warning: 10.129.103.173 giving up on port because retransmission cap hit (1).
+Nmap scan report for 10.129.103.173
+Host is up (0.084s latency).
+Not shown: 65463 closed tcp ports (reset), 70 filtered tcp ports (no-response)
+PORT      STATE SERVICE
+22/tcp    open  ssh
+27017/tcp open  mongod
+
+Nmap done: 1 IP address (1 host up) scanned in 24.13 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap [K[K[K[K[Knc -nc $ip 27017
+[?2004lno port[s] to connect to
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnc -nc $ip 27017[C[C[1P[1@v
+[?2004l(UNKNOWN) [10.129.103.173] 27017 (?) open
+^C
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnc -nv $ip 27017[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Knampo [K[K[K[K[Kmap -sV -p 27017 $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-06 18:46 EDT
+Nmap scan report for 10.129.103.173
+Host is up (0.17s latency).
+
+PORT      STATE SERVICE VERSION
+27017/tcp open  mongodb MongoDB 3.6.8
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.34 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo [Ksh --host $ip --port 27017
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	68437083121f7b3d0869e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+show dbs
+MongoServerSelectionError: Server at 10.129.103.173:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 7 (MongoDB 4.0)
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mshow dbs
+[?2004lbash: show: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo sv[K[K---version
+[?2004lbash: mongo: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongsh --version
+[?2004lbash: mongsh: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongsh --version[1@o
+[?2004l2.5.2
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt upgrade mongodb-org
+[?2004l
+APT on Parrot behaves differently than Debian.
+apt upgrade is equivalent to apt full-upgrade in Debian,
+and performs a complete system update.
+
+Use apt safe-upgrade to perform a partial upgrade.
+
+
+
+
+
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Calculating upgrade... 0%Calculating upgrade... 10%Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+[1;31mE: [0mUnable to locate package mongodb-org[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt e[Kseartch[K[K=[K[Kch mongo
+[?2004lSorting... 0%Sorting... 0%Sorting... 0%Sorting... Done
+Full Text Search... 50%Full Text Search... 50%Full Text Search... 88%Full Text Search... Done
+[32mcelery[0m/parrot6 5.2.6-5 all
+  async task/job queue based on message passing (common files)
+
+[32mcollectd-core[0m/parrot6 5.12.0-14 amd64
+  statistics collection and monitoring daemon (core system)
+
+[32mconsole-cyrillic[0m/parrot6 0.9-17.2 all
+  Cyrillic fonts and keyboard layouts for Linux console
+
+[32mfonts-noto-core[0m/parrot6 20201225-1 all
+  "No Tofu" font families with large Unicode coverage (core)
+
+[32mfonts-unifont[0m/parrot6 1:15.0.01-2 all
+  TrueType version of GNU Unifont
+
+[32mgolang-github-juju-simplekv-dev[0m/parrot6 1.1.0-2 all
+  Naive key-value store with multiple backends (library)
+
+[32mgolang-github-rs-xid-dev[0m/parrot6 1.4.0-1 all
+  globally unique id generator thought for the web
+
+[32mgolang-gopkg-mgo.v2-dev[0m/parrot6 2016.08.01-7 all
+  Go library for MongoDB
+
+[32mgolang-mongodb-mongo-driver-dev[0m/parrot6 1.8.4+ds1-3 all
+  MongoDB official driver for Go
+
+[32mhunspell-mn[0m/parrot6 1:7.5.0-1 all
+  Mongolian dictionary for hunspell
+
+[32mhyphen-mn[0m/parrot6 1:7.5.0-1 all
+  Mongolian hyphenation patterns
+
+[32mibus-table-mongol-bichig[0m/parrot6 1.3.15+ds-1 all
+  ibus-table input method: Mongol Bichig
+
+[32mjmeter-mongodb[0m/parrot6 2.13-5 all
+  Load testing and performance measurement application (mongodb module)
+
+[32mkamailio-mongodb-modules[0m/parrot6 5.6.3-2 amd64
+  mongodb modules for the Kamailio SIP server
+
+[32mlibapache-session-mongodb-perl[0m/parrot6 0.23-2 all
+  implementation of Apache::Session
+
+[32mlibbson-1.0-0[0m/parrot6,now 1.23.1-1+deb12u1 amd64 [installed,automatic]
+  Library to parse and generate BSON documents - runtime files
+
+[32mlibbson-dev[0m/parrot6 1.23.1-1+deb12u1 amd64
+  Library to parse and generate BSON documents - dev files
+
+[32mlibbson-doc[0m/parrot6 1.23.1-1+deb12u1 all
+  Library to parse and generate BSON documents - documentation
+
+[32mlibbson-perl[0m/parrot6 1.12.2-1 all
+  BSON serialization and deserialization for Perl
+
+[32mlibbson-xs-perl[0m/parrot6 0.8.4-2+deb12u1 amd64
+  Perl XS implementation of MongoDB's BSON serialization
+
+[32mlibcatmandu-perl[0m/parrot6 1.2020-1 all
+  metadata toolkit
+
+[32mlibcatmandu-store-mongodb-perl[0m/parrot6 0.0806-1 all
+  searchable store backed by MongoDB
+
+[32mlibmango-perl[0m/parrot6 1.30-2 all
+  Pure-Perl non-blocking I/O MongoDB client
+
+[32mlibmongo-client-dev[0m/parrot6 0.1.8-4 amd64
+  Development files for the alternate C driver for MongoDB
+
+[32mlibmongo-client-doc[0m/parrot6 0.1.8-4 all
+  Documentation for the alternate C driver for MongoDB
+
+[32mlibmongo-client0[0m/parrot6 0.1.8-4 amd64
+  Alternate C driver for the MongoDB document-oriented datastore
+
+[32mlibmongoc-1.0-0[0m/parrot6,now 1.23.1-1+deb12u1 amd64 [installed,automatic]
+  MongoDB C client library - runtime files
+
+[32mlibmongoc-dev[0m/parrot6 1.23.1-1+deb12u1 amd64
+  MongoDB C client library - dev files
+
+[32mlibmongoc-doc[0m/parrot6 1.23.1-1+deb12u1 all
+  MongoDB C client library - documentation
+
+[32mlibmongoclient-dev[0m/parrot6 1.1.3-3.1+b1 amd64
+  MongoDB C++ Driver (development)
+
+[32mlibmongoclient0[0m/parrot6 1.1.3-3.1+b1 amd64
+  MongoDB C++ Driver (runtime)
+
+[32mlibmongocrypt-dev[0m/parrot6 1.7.2-1 amd64
+  client-side field level encryption library - dev files
+
+[32mlibmongocrypt0[0m/parrot6,now 1.7.2-1 amd64 [installed,automatic]
+  client-side field level encryption library - runtime files
+
+[32mlibmongodb-java[0m/parrot6 3.6.3-2 all
+  MongoDB Java Driver
+
+[32mlibmongodb-perl[0m/parrot6 2.2.2-2 all
+  Mongo Driver for Perl
+
+[32mlibmongoose2[0m/parrot6 1:5.12.0+dfsg-2 amd64
+  graph partitioning tool that can quickly compute edge cuts (shared library)
+
+[32mlibpocomongodb80[0m/parrot6 1.11.0-3+deb12u1 amd64
+  C++ Portable Components (POCO) Data MongoDB library
+
+[32mlibreoffice-l10n-mn[0m/parrot6,parrot6-security 4:7.4.7-1+deb12u8 all
+  office productivity suite -- Mongolian language package
+
+[32mlibsuitesparse-dev[0m/parrot6 1:5.12.0+dfsg-2 amd64
+  libraries for sparse matrices computations (development files)
+
+[32mmongodb-mongosh[0m/now 2.5.2 amd64 [installed,local]
+  MongoDB Shell CLI REPL Package
+
+[32mmongoose[0m/parrot6 1:5.12.0+dfsg-2 amd64
+  graph partitioning tool that can quickly compute edge cuts (executable)
+
+[32mmonitoring-plugins-contrib[0m/parrot6 42.20230308+deb12u1+b1 amd64
+  Plugins for nagios compatible monitoring systems
+
+[32mnode-mongodb[0m/parrot6 3.6.4+~cs11.13.19-2 all
+  official MongoDB driver for Node.js
+
+[32mphp-doctrine-cache[0m/parrot6 2.2.0-1 all
+  cache library - Doctrine component
+
+[32mphp-horde-cache[0m/parrot6 2.5.5-11 all
+  Horde Caching API
+
+[32mphp-horde-vfs[0m/parrot6 2.4.2-1 all
+  Virtual file system library
+
+[32mphp-mongodb[0m/parrot6 1.15.0+1.11.1+1.9.2+1.7.5-1 amd64
+  MongoDB driver for PHP
+
+[32mphp-mongodb-all-dev[0m/parrot6 1.15.0+1.11.1+1.9.2+1.7.5-1 all
+  MongoDB driver for PHP
+
+[32mphp8.2-mongodb[0m/parrot6 1.15.0+1.11.1+1.9.2+1.7.5-1 amd64
+  MongoDB driver for PHP
+
+[32mprometheus-mongodb-exporter[0m/parrot6 1.0.0+git20180522.e755a44-3+b12 amd64
+  Prometheus exporter for MongoDB
+
+[32mpuppet-module-puppetlabs-mongodb[0m/parrot6 0.7.0-4 all
+  Puppet module for managing mongodb installation and configuration
+
+[32mpython-celery-doc[0m/parrot6 5.2.6-5 all
+  async task/job queue based on message passing (Documentation)
+
+[32mpython-libnmap-doc[0m/parrot6 0.7.2-1 all
+  Python NMAP Library (common documentation)
+
+[32mpython-mongoengine-doc[0m/parrot6 0.24.2-4 all
+  Python Document-Object Mapper for working with MongoDB (documentation)
+
+[32mpython-pymongo-doc[0m/parrot6 3.11.0-1+deb12u1 all
+  Python interface to the MongoDB document-oriented database (documentation)
+
+[32mpython-transliterate-doc[0m/parrot6 1.10.2-5 all
+  Bi-directional transliterator for Python (Documentation)
+
+[32mpython3-bson[0m/parrot6 3.11.0-1+deb12u1 amd64
+  Python3 implementation of BSON for MongoDB
+
+[32mpython3-bson-ext[0m/parrot6 3.11.0-1+deb12u1 amd64
+  C-coded extension to the python3-bson package
+
+[32mpython3-celery[0m/parrot6 5.2.6-5 all
+  async task/job queue based on message passing (Python3 version)
+
+[32mpython3-django-q[0m/parrot6 1.3.9-4 all
+  Django multiprocessing distributed task queue (Python 3 version)
+
+[32mpython3-flask-mongoengine[0m/parrot6 1.0.0-1 all
+  Extension that provides integration with MongoEngine (Python 3)
+
+[32mpython3-gridfs[0m/parrot6 3.11.0-1+deb12u1 all
+  Python3 implementation of GridFS for MongoDB
+
+[32mpython3-libnmap[0m/parrot6 0.7.2-1 all
+  Python 3 NMAP library
+
+[32mpython3-mockupdb[0m/parrot6 1.8.0-4 all
+  MongoDB Wire Protocol server library - Python 3.x
+
+[32mpython3-mongoengine[0m/parrot6 0.24.2-4 all
+  Python 3 Document-Object Mapper for working with MongoDB
+
+[32mpython3-mongomock[0m/parrot6 4.1.2-1 all
+  Fake pymongo stub for testing simple MongoDB-dependent code (Python 3)
+
+[32mpython3-motor[0m/parrot6 2.3.0-3 all
+  full-featured, non-blocking MongoDB driver - Python 3.x
+
+[32mpython3-pymongo[0m/parrot6 3.11.0-1+deb12u1 amd64
+  Python3 interface to the MongoDB document-oriented database
+
+[32mpython3-pymongo-ext[0m/parrot6 3.11.0-1+deb12u1 amd64
+  C-coded extension to the python3-pymongo package
+
+[32mpython3-simplekv[0m/parrot6 0.14.1-0parrot1 all
+  simple key-value store for binary data (Python 3)
+
+[32mpython3-transliterate[0m/parrot6 1.10.2-5 all
+  Bi-directional transliterator for Python
+
+[32mrsyslog-mongodb[0m/parrot6 8.2302.0-1+deb12u1 amd64
+  MongoDB output plugin for rsyslog
+
+[32mruby-acts-as-api[0m/parrot6 1.0.1-2.1 all
+  makes creating XML/JSON responses in Rails 3 easy and fun
+
+[32mruby-connection-pool[0m/parrot6 2.2.5-1 all
+  generic connection pool for ruby
+
+[32mruby-database-cleaner[0m/parrot6 1.7.0-1.1 all
+  clean databases to ensure a clean state for testing
+
+[32mruby-em-mongo[0m/parrot6 0.5.1-1.1 all
+  Ruby EventMachine driver for MongoDB
+
+[32mruby-enumerize[0m/parrot6 2.5.0-1 all
+  enumerated attributes with internationalisation
+
+[32mruby-mongo[0m/parrot6 2.5.1-1.1 all
+  Ruby driver for MongoDB
+
+[32mruby-origin[0m/parrot6 2.2.0-1.1 all
+  Simple DSL for MongoDB query generation
+
+[32msyslog-ng[0m/parrot6 3.38.1-5 all
+  Enhanced system logging daemon (metapackage)
+
+[32msyslog-ng-core[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (core)
+
+[32msyslog-ng-dbg[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (debug symbols)
+
+[32msyslog-ng-dev[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (development files)
+
+[32msyslog-ng-mod-add-contextual-data[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (add-contextual-data plugin)
+
+[32msyslog-ng-mod-amqp[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (AMQP plugin)
+
+[32msyslog-ng-mod-examples[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (example plugins)
+
+[32msyslog-ng-mod-geoip2[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (GeoIP2 plugin)
+
+[32msyslog-ng-mod-graphite[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (graphite plugin)
+
+[32msyslog-ng-mod-http[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (HTTP destination)
+
+[32msyslog-ng-mod-mongodb[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (MongoDB plugin)
+
+[32msyslog-ng-mod-python[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (Python plugin)
+
+[32msyslog-ng-mod-rdkafka[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (Kafka destination, based on librdkafka)
+
+[32msyslog-ng-mod-redis[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (Redis plugin)
+
+[32msyslog-ng-mod-riemann[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (Riemann destination)
+
+[32msyslog-ng-mod-slog[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (secure logging plugin)
+
+[32msyslog-ng-mod-smtp[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (SMTP plugin)
+
+[32msyslog-ng-mod-snmp[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (SNMP plugin)
+
+[32msyslog-ng-mod-sql[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (SQL plugin)
+
+[32msyslog-ng-mod-stardate[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (stardate plugin)
+
+[32msyslog-ng-mod-stomp[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (STOMP plugin)
+
+[32msyslog-ng-mod-xml-parser[0m/parrot6 3.38.1-5 amd64
+  Enhanced system logging daemon (xml parser plugin)
+
+[32msyslog-ng-scl[0m/parrot6 3.38.1-5 all
+  Enhanced system logging daemon (scl files)
+
+[32mtesseract-ocr-mon[0m/parrot6 1:4.1.0-2 all
+  tesseract-ocr language files for Mongolian
+
+[32mtexlive-lang-cyrillic[0m/parrot6 2022.20230122-1 all
+  TeX Live: Cyrillic
+
+[32munifont[0m/parrot6 1:15.0.01-2 all
+  font with a glyph for each visible Unicode Plane 0 character
+
+[32muwsgi-plugin-mongo[0m/parrot6 2.0.21+3+0.0.9 amd64
+  MongoDB/GridFS plugins for uWSGI
+
+[32mw1retap-mongo[0m/parrot6 1.4.6-1.1+b2 amd64
+  Data logger for 1-Wire weather sensors (MongoDB plugin)
+
+[32mxfonts-unifont[0m/parrot6 1:15.0.01-2 all
+  PCF (bitmap) version of GNU Unifont
+
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install mongodb-sh
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+[1;31mE: [0mUnable to locate package mongodb-sh[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install mongodb-sh[K[K*
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Note, selecting 'mongodb-shell' for glob 'mongodb-*'
+Note, selecting 'mongodb-mongosh' for glob 'mongodb-*'
+Note, selecting 'mongodb-server' for glob 'mongodb-*'
+Note, selecting 'mongodb-dev' for glob 'mongodb-*'
+Note, selecting 'mongodb-mongosh' instead of 'mongodb-shell'
+mongodb-mongosh is already the newest version (2.5.2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install mongodb-*[Kmongosh
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+mongodb-mongosh is already the newest version (2.5.2).
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install mongodb-mongosh[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Knode-mongodb 
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  node-bl
+The following NEW packages will be installed:
+  node-bl node-mongodb
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 346 kB of archives.
+After this operation, 2,754 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+[33m0% [Working][0m[33m0% [Connected to deb.parrot.sh (23.92.23.177)][0m                                              Get:1 https://deb.parrot.sh/parrot lory/main amd64 node-bl all 5.1.0-1 [13.8 kB]
+[33m                                              0% [1 node-bl 0 B/13.8 kB 0%][0m[33m                             13% [Working][0m             Get:2 https://deb.parrot.sh/parrot lory/main amd64 node-mongodb all 3.6.4+~cs11.13.19-2 [332 kB]
+[33m13% [2 node-mongodb 0 B/332 kB 0%][0m[33m                                  100% [Working][0m              Fetched 346 kB in 1s (488 kB/s)
+
+7[0;28r8[1ASelecting previously unselected package node-bl.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 364923 files and directories currently installed.)
+Preparing to unpack .../node-bl_5.1.0-1_all.deb ...
+7[29;0f[42m[30mProgress: [  0%][49m[39m [..............................................................................................................] 87[29;0f[42m[30mProgress: [ 11%][49m[39m [############..................................................................................................] 8Unpacking node-bl (5.1.0-1) ...
+7[29;0f[42m[30mProgress: [ 22%][49m[39m [########################......................................................................................] 8Selecting previously unselected package node-mongodb.
+Preparing to unpack .../node-mongodb_3.6.4+~cs11.13.19-2_all.deb ...
+7[29;0f[42m[30mProgress: [ 33%][49m[39m [####################################..........................................................................] 8Unpacking node-mongodb (3.6.4+~cs11.13.19-2) ...
+7[29;0f[42m[30mProgress: [ 44%][49m[39m [################################################..............................................................] 8Setting up node-bl (5.1.0-1) ...
+7[29;0f[42m[30mProgress: [ 56%][49m[39m [#############################################################.................................................] 87[29;0f[42m[30mProgress: [ 67%][49m[39m [#########################################################################.....................................] 8Setting up node-mongodb (3.6.4+~cs11.13.19-2) ...
+7[29;0f[42m[30mProgress: [ 78%][49m[39m [#####################################################################################.........................] 87[29;0f[42m[30mProgress: [ 89%][49m[39m [#################################################################################################.............] 8
+7[0;29r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install node-mongodb mongodb-mongosh*[Ksh[C[C[C[C[C[C[C[C[C[C[6Psearch mongo[C[C[C[C[C[C[C[C[C[Cupgrade mongodb-org[C[C[C[C[C[C[6Pmongosh --version[C[C[C[C[C[C[C[C[C[C[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Co ---version[C[C[C[C[C[C[8Pshow dbs[C[C[C[C[C[Cmongosh --host $ip --port 27017
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	684371a1e04d05611269e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: Server at 10.129.103.173:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 7 (MongoDB 4.0)
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm uninstall mongodb
+[?2004l[?25l([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 28ms[0m[K[K[?25h
+up to date in 152ms
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm install mongodb@3.7.3
+[?2004l[?25l([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 554ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m##########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:isarray: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz 403ms (cache miss)[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠹ reify:safe-buffer: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz 423ms ([0m[K([107;97m#################[0m[100;90m⠂[0m) ⠦ reify:saslprep: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/saslprep/-/saslprep-1.0.3.tgz 457ms (cache mis[0m[K([107;97m##################[0m) ⠇ reify:bson: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/bson/-/bson-1.1.6.tgz 482ms (cache miss)[0m[K([107;97m##################[0m) ⠧ reify:mongodb: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/mongodb/-/mongodb-3.7.3.tgz 544ms (cache miss)[0m[K[K[?25h
+added 19 packages, and audited 20 packages in 2s
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found [32m[1m0[22m[39m vulnerabilities
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm install mongodb@3.7.3[C[C[C[C[C[C[C[C[C[C[4Puninstall mongodb[C[C[C[C[C[Cmongosh --host $ip --port 27017
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	6843720a546a0b6afe69e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: Server at 10.129.103.173:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 7 (MongoDB 4.0)
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm fund
+[?2004l[0mmongod[0m
+[0m└── [40m[37mhttps://github.com/sponsors/feross[39m[49m[0m
+[0m    └── safe-buffer@5.2.1[0m
+[0m[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm fund[C[C[C[C[C[Cmongosh --host $ip --port 27017[C[C[C[C[C[C[6Pnpm install mongodb@3.7.3[C[C[C[C[C[C[C[C[C[C[4Puninstall mongodb
+[?2004l[?25l([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 75ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 75ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 75ms[0m[K[K[?25h
+removed 19 packages, and audited 1 package in 270ms
+
+found [32m[1m0[22m[39m vulnerabilities
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm uninstall mongodb[C[C[C[C[C[C[C[C[C[Cfund[K[C[C[C[C[C[Cmongosh --host $ip --port 27017[C[C[C[C[C[C[6Pnpm install mongodb@3.7.3
+[?2004l[?25l([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 186ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 186ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 358ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠦ reify:saslprep: [32;40mtiming[0m [35mreifyNode:node_modules/readable-stream[0m Completed in 274ms[0m[K([107;97m##################[0m) ⠧ reify:bson: [32;40mtiming[0m [35mreifyNode:node_modules/saslprep[0m Completed in 276ms[0m[K([107;97m##################[0m) ⠦ reify:mongodb: [32;40mtiming[0m [35mreifyNode:node_modules/bson[0m Completed in 292ms[0m[K[K[?25h
+added 19 packages, and audited 20 packages in 888ms
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found [32m[1m0[22m[39m vulnerabilities
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm fund
+[?2004l[0mmongod[0m
+[0m└── [40m[37mhttps://github.com/sponsors/feross[39m[49m[0m
+[0m    └── safe-buffer@5.2.1[0m
+[0m[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm fundinstall mongodb@3.7.3[C[C[C[C[C[C[C[C[C[C[4Puninstall mongodb[C[C[C[C[C[C[C[C[C[Cfund[K[C[C[C[C[C[Cmongosh --host $ip --port 27017
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	6843726c218f9a9b4669e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: Server at 10.129.103.173:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 7 (MongoDB 4.0)
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo [Ksh "mongodb:://$ip:27901[K[K[K-[K017"
+[?2004lMongoshInvalidInputError: [COMMON-10001] Invalid URI: mongodb:://10.129.103.173:27017
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongosh "mongodb:://$ip:27017"[1P//$ip:27017"
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	684372e19d308438ec69e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: Server at 10.129.103.173:27017 reports maximum wire version 6, but this version of the Node.js Driver requires at least 7 (MongoDB 4.0)
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongosh 
+[?2004l]0;mongosh mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	68437347145fdef76d69e327
+Connecting to:		[1m[32mmongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.2[0m
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongosh "mongodb://$ip:27017" --apiVersion 1
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	6843735fd11a21b11369e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: no such command: 'hello', bad cmd: '{ hello: 1, helloOk: true, client: { application: { name: "mongosh 2.5.2" }, driver: { name: "nodejs|mongosh", version: "6.16.0|2.5.2" }, platform: "Node.js v20.19.2, LE", os: { name: "linux", architecture: "x64", version: "3.10.0-327.22.2.el7.x86_64", type: "Linux" } }, compression: [ "none" ], apiVersion: "1", $readPreference: { mode: "primaryPreferred" }, $db: "admin" }'
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongosh "mongodb://$ip:27017" --apiVersion 1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K"mongodb://$ip:27017" --apiVersion 1 --apiStrict false
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	684373b76f8cbc5b0469e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: no such command: 'hello', bad cmd: '{ hello: 1, helloOk: true, client: { application: { name: "mongosh 2.5.2" }, driver: { name: "nodejs|mongosh", version: "6.16.0|2.5.2" }, platform: "Node.js v20.19.2, LE", os: { name: "linux", architecture: "x64", version: "3.10.0-327.22.2.el7.x86_64", type: "Linux" } }, compression: [ "none" ], apiVersion: "1", apiStrict: false, $readPreference: { mode: "primaryPreferred" }, $db: "admin" }'
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo
+[?2004lbash: mongo: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm uninstall mongodb
+[?2004l[?25l([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 74ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 74ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 74ms[0m[K[K[?25h
+removed 19 packages, and audited 1 package in 281ms
+
+found [32m[1m0[22m[39m vulnerabilities
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm@insta[K[K[K[K[K[K install mongodb@latest
+[?2004l[?25l([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 2ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 2ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 2ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 2ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠹ idealTree: [32;40mtiming[0m [35marborist:ctor[0m Completed in 2ms[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠸ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠴ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [7msill[0m [35midealTree[0m buildDeps[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠦ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠇ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠏ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠋ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠙ idealTree:mongod: [32;40mtiming[0m [35midealTree:#root[0m Completed in 2420ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ idealTree: [32;40mtiming[0m [35midealTree[0m Completed in 4180ms[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠼ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m#########[0m[100;90m⠂⠂⠂⠂⠂⠂⠂⠂⠂[0m) ⠧ reify:mongodb: [7msill[0m [35maudit[0m bulk request {[0m[K([107;97m############[0m[100;90m⠂⠂⠂⠂⠂⠂[0m) ⠇ reify:punycode: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz 188ms (cache mis[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠋ reify:@types/webidl-conversions: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@types/webidl-conversions/-/w[0m[K([107;97m#############[0m[100;90m⠂⠂⠂⠂⠂[0m) ⠙ reify:@types/webidl-conversions: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@types/webidl-conversions/-/w[0m[K([107;97m##############[0m[100;90m⠂⠂⠂⠂[0m) ⠼ reify:mongodb-connection-string-url: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/mongodb-connection-string[0m[K([107;97m################[0m[100;90m⠂⠂[0m) ⠇ reify:tr46: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/tr46/-/tr46-5.1.1.tgz 384ms (cache miss)[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠋ reify:@mongodb-js/saslprep: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠋ reify:@mongodb-js/saslprep: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠹ reify:bson: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/bson/-/bson-6.10.4.tgz 509ms (cache miss)[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠹ reify:bson: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/bson/-/bson-6.10.4.tgz 509ms (cache miss)[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠹ reify:bson: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/bson/-/bson-6.10.4.tgz 509ms (cache miss)[0m[K([107;97m#################[0m[100;90m⠂[0m) ⠹ reify:bson: [32;40mhttp[0m [35mfetch[0m GET 200 https://registry.npmjs.org/bson/-/bson-6.10.4.tgz 509ms (cache miss)[0m[K[K[?25h
+added 12 packages, and audited 13 packages in 5s
+
+found [32m[1m0[22m[39m vulnerabilities
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnpm install mongodb@latest[C[C[C[C[C[C[C[C[C[C[5Puninstall mongodb[C[C[C[C[C[Cmongo[Ksh "mongodb://$ip:27017" --apiVersion 1 --apiStrict false
+[?2004l]0;mongosh mongodb://10.129.103.173:27017/?directConnection=trueCurrent Mongosh Log ID:	68437482a75605324169e327
+Connecting to:		[1m[32mmongodb://10.129.103.173:27017/?directConnection=true&appName=mongosh+2.5.2[0m
+MongoServerSelectionError: no such command: 'hello', bad cmd: '{ hello: 1, helloOk: true, client: { application: { name: "mongosh 2.5.2" }, driver: { name: "nodejs|mongosh", version: "6.16.0|2.5.2" }, platform: "Node.js v20.19.2, LE", os: { name: "linux", architecture: "x64", version: "3.10.0-327.22.2.el7.x86_64", type: "Linux" } }, compression: [ "none" ], apiVersion: "1", apiStrict: false, $readPreference: { mode: "primaryPreferred" }, $db: "admin" }'
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install -y mongodb-clients
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+[1;31mE: [0mUnable to locate package mongodb-clients[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongosh --version
+[?2004l2.5.2
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/mongod[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..[K[K~/ho[K[K[K[K/home/ryebread/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  [01;34mhtb[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mprojecteuler[0m  [01;34mPublic[0m  [01;34mSecLists[0m  [01;34mTemplates[0m  [01;34mVideos[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd Downloads/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;31mmongodb-compass_1.46.3_amd64.deb[0m  [01;31mmongodb-mongosh_2.5.2_amd64.deb[0m  starting_point_rquip.ovpn  starting_point_rquip-vip.ovpn
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mdpkh[Kg -i mongodb-compass_1.46.3_amd64.deb 
+[?2004lSelecting previously unselected package mongodb-compass.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 365211 files and directories currently installed.)
+Preparing to unpack mongodb-compass_1.46.3_amd64.deb ...
+Unpacking mongodb-compass (1.46.3) ...
+Setting up mongodb-compass (1.46.3) ...
+Processing triggers for mate-menus (1.26.0-3) ...
+Processing triggers for desktop-file-utils (0.26-1) ...
+Processing triggers for bamfdaemon (0.5.6+repack-1) ...
+Rebuilding /usr/share/applications/bamf-2.index...
+Processing triggers for mailcap (3.70+nmu1) ...
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo
+mongodb-compass  mongosh          
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongo
+mongodb-compass  mongosh          
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongodb-compass
+[?2004l[0606/191257.183234:FATAL:electron/shell/app/electron_main_delegate.cc:288] Running as root without --no-sandbox is not supported. See https://crbug.com/638180.
+Trace/breakpoint trap
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mmongodb-compass --no-sandbox
+[?2004l[3945:0606/191306.145518:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191306.145638:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191306.145662:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191306.145680:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191306.145720:ERROR:dbus/object_proxy.cc:590] Failed to call method: org.freedesktop.DBus.NameHasOwner: object_path= /org/freedesktop/DBus: unknown error type: 
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+[3978:0606/191306.244818:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3978:0606/191306.245042:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3978:0606/191306.245152:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+Authorization required, but no authorization protocol specified
+
+[3978:0606/191306.245484:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3978:0606/191306.245575:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3978:0606/191306.245669:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[3978:0606/191306.245740:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[3978:0606/191306.245822:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+Authorization required, but no authorization protocol specified
+
+[3978:0606/191306.270812:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3978:0606/191306.270975:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3978:0606/191306.271049:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+Authorization required, but no authorization protocol specified
+
+[3978:0606/191306.271482:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3978:0606/191306.271569:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3978:0606/191306.271718:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[3978:0606/191306.271840:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[3978:0606/191306.271935:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+[3978:0606/191306.274110:ERROR:components/viz/service/main/viz_main_impl.cc:183] Exiting GPU process due to errors during initialization
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+[3990:0606/191307.202866:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3990:0606/191307.203972:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3990:0606/191307.204113:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+Authorization required, but no authorization protocol specified
+
+[3990:0606/191307.204560:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3990:0606/191307.204679:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3990:0606/191307.204815:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[3990:0606/191307.204945:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[3990:0606/191307.205055:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+Authorization required, but no authorization protocol specified
+
+[3990:0606/191307.230789:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3990:0606/191307.231070:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3990:0606/191307.231167:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGL failed with error EGL_NOT_INITIALIZED, trying next display type
+Authorization required, but no authorization protocol specified
+
+[3990:0606/191307.231681:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 12289: Could not open the default X display.
+[3990:0606/191307.231789:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Could not open the default X display.
+[3990:0606/191307.232388:ERROR:ui/gl/gl_display.cc:780] eglInitialize OpenGLES failed with error EGL_NOT_INITIALIZED
+[3990:0606/191307.232615:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[3990:0606/191307.232760:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+[3990:0606/191307.235538:ERROR:components/viz/service/main/viz_main_impl.cc:183] Exiting GPU process due to errors during initialization
+[3945:0606/191307.302658:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191307.335300:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+[4015:0606/191307.456349:ERROR:ui/gl/angle_platform_impl.cc:49] DisplayVkXcb.cpp:58 (initialize): xcb_connect() failed, error 1
+ERR: DisplayVkXcb.cpp:58 (initialize): xcb_connect() failed, error 1
+[4015:0606/191307.456636:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 0: Not initialized.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 0: Not initialized.
+[4015:0606/191307.456834:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Not initialized.
+[4015:0606/191307.456926:ERROR:ui/gl/gl_display.cc:780] eglInitialize SwANGLE failed with error EGL_NOT_INITIALIZED
+[4015:0606/191307.457086:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[4015:0606/191307.457177:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+Authorization required, but no authorization protocol specified
+
+[4015:0606/191307.487857:ERROR:ui/gl/angle_platform_impl.cc:49] DisplayVkXcb.cpp:58 (initialize): xcb_connect() failed, error 1
+ERR: DisplayVkXcb.cpp:58 (initialize): xcb_connect() failed, error 1
+[4015:0606/191307.488114:ERROR:ui/gl/angle_platform_impl.cc:49] Display.cpp:1079 (initialize): ANGLE Display::initialize error 0: Not initialized.
+ERR: Display.cpp:1079 (initialize): ANGLE Display::initialize error 0: Not initialized.
+[4015:0606/191307.488349:ERROR:ui/gl/gl_display.cc:508] EGL Driver message (Critical) eglInitialize: Not initialized.
+[4015:0606/191307.488491:ERROR:ui/gl/gl_display.cc:780] eglInitialize SwANGLE failed with error EGL_NOT_INITIALIZED
+[4015:0606/191307.488667:ERROR:ui/gl/gl_display.cc:815] Initialization of all EGL display types failed.
+[4015:0606/191307.488806:ERROR:ui/ozone/common/gl_ozone_egl.cc:26] GLDisplayEGL::Initialize failed.
+[4015:0606/191307.492881:ERROR:components/viz/service/main/viz_main_impl.cc:183] Exiting GPU process due to errors during initialization
+Authorization required, but no authorization protocol specified
+
+Authorization required, but no authorization protocol specified
+
+[4033:0606/191307.552023:ERROR:ui/base/x/x11_software_bitmap_presenter.cc:150] XGetWindowAttributes failed for window 65011716
+[3945:0606/191310.240109:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191310.593690:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[3945:0606/191310.656603:ERROR:dbus/bus.cc:408] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/Downloads[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+
+Script done on 2025-06-06 19:13:31-04:00 [COMMAND_EXIT_CODE="0"]

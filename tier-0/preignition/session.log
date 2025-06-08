@@ -1,0 +1,285 @@
+Script started on 2025-06-04 22:22:04-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="158" LINES="31"]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/preignition[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.193.q[Kq[K199
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/preignition[0;31m]
+[0;31m└──╼ [0m[01;33m#[0moing[K[K[K[Kping $ip
+[?2004lPING 10.129.193.199 (10.129.193.199) 56(84) bytes of data.
+^C
+--- 10.129.193.199 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2023ms
+
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/preignition[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ,,
+[?2004lbash: cd: ,,: No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/preignition[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mdancing[0m  [01;34mexplosion[0m  [01;34mfawn[0m  [01;34mmeow[0m  [01;34mpreignition[0m  [01;34mredeemer[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd [K[0;31m└──╼ [0m[01;33m#[0mcd [K[K[Klscd ..,,ping $ip
+[?2004lPING 10.129.193.199 (10.129.193.199) 56(84) bytes of data.
+64 bytes from 10.129.193.199: icmp_seq=1 ttl=63 time=79.8 ms
+64 bytes from 10.129.193.199: icmp_seq=2 ttl=63 time=76.7 ms
+^C
+--- 10.129.193.199 ping statistics ---
+3 packets transmitted, 2 received, 33.3333% packet loss, time 2004ms
+rtt min/avg/max/mdev = 76.674/78.224/79.775/1.550 ms
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -F $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-04 22:26 EDT
+Nmap scan report for 10.129.193.199
+Host is up (0.083s latency).
+Not shown: 99 closed tcp ports (reset)
+PORT   STATE SERVICE
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 0.65 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sV -p 80 $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-04 22:26 EDT
+Nmap scan report for 10.129.193.199
+Host is up (0.079s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx 1.14.2
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.77 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnc -nv 80 $ip
+[?2004l^C
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnc -nv 80 $ip[K[K[K[K[K[K$ip 80
+[?2004l(UNKNOWN) [10.129.193.199] 80 (http) open
+^C
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcurl $ip
+[?2004l<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ...
+[?2004lbash: cd: ...: No such file or directory
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  [01;34mhtb[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mprojecteuler[0m  [01;34mPublic[0m  [01;34mSecLists[0m  [01;34mTemplates[0m  [01;34mVideos[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd SecLists/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mAi[0m               CONTRIBUTORS.md  [01;34mFuzzing[0m  [01;34mMiscellaneous[0m  [01;34mPattern-Matching[0m  README.md     [01;34mUsernames[0m
+CONTRIBUTING.md  [01;34mDiscovery[0m        LICENSE  [01;34mPasswords[0m      [01;34mPayloads[0m          [01;35mSecLists.png[0m  [01;34mWeb-Shells[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd Fuzzing/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Fuzzing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l 0-999999-hashgen.py               doble-uri-hex.txt                      HTML5sec-Injections-Jhaddix.txt        special-chars.txt
+ 1-4_all_letters_a-z.txt           email-top-100-domains.txt              http-request-methods.txt              'special-chars + urlencoded.txt'
+ 3-digits-000-999.txt              environment-identifiers.txt            IBMMQSeries-channels.txt               SSI-Injection-Jhaddix.txt
+ [0m[01;34m403[0m                               extensions-Bo0oM.txt                   JSON.Fuzzing.txt                       template-engines-expression.txt
+ 4-digits-0000-9999.txt            extensions-compressed.fuzz.txt         LDAP-active-directory-attributes.txt   template-engines-special-vars.txt
+ 5-digits-00000-99999.txt          extensions-most-common.fuzz.txt        LDAP-active-directory-classes.txt      Unicode.txt
+ 6-digits-000000-999999.txt        extensions-skipfish.fuzz.txt           LDAP.Fuzzing.txt                       UnixAttacks.fuzzdb.txt
+ alphanum-case-extra.txt           extension-test.txt                     LDAP-openldap-attributes.txt           URI-hex.txt
+ alphanum-case.txt                 file-extensions-all-cases.txt          LDAP-openldap-classes.txt              URI-XSS.fuzzdb.txt
+ [01;34mAmounts[0m                           file-extensions-lower-case.txt         [01;34mLFI[0m                                    [01;34mUser-Agents[0m
+ big-list-of-naughty-strings.txt   file-extensions.txt                    login_bypass.txt                       Windows-Attacks.fuzzdb.txt
+ char.txt                          file-extensions-upper-case.txt         Metacharacters.fuzzdb.txt              XML-FUZZ.txt
+ command-injection-commix.txt      FormatString-Jhaddix.txt               numeric-fields-only.txt                [01;34mXSS[0m
+ country-codes-lower-case.txt      fully-qualified-java-classes.txt       os-names-mutated.txt                   XXE-Fuzzing.txt
+ country-codes.txt                 fuzz-Bo0oM-friendly.txt                os-names.txt
+ country-codes-upper-case.txt      fuzz-Bo0oM.txt                         php-magic-methods.txt
+ [01;34mDatabases[0m                         FuzzingStrings-SkullSecurity.org.txt   README.md
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Fuzzing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mAi[0m               CONTRIBUTORS.md  [01;34mFuzzing[0m  [01;34mMiscellaneous[0m  [01;34mPattern-Matching[0m  README.md     [01;34mUsernames[0m
+CONTRIBUTING.md  [01;34mDiscovery[0m        LICENSE  [01;34mPasswords[0m      [01;34mPayloads[0m          [01;35mSecLists.png[0m  [01;34mWeb-Shells[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd Discovery/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mDNS[0m  [01;34mFile-System[0m  [01;34mInfrastructure[0m  [01;34mMainframe[0m  [01;34mSNMP[0m  [01;34mVariables[0m  [01;34mWeb-Content[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd Web-Content/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004lAdobeXML.fuzz.txt                            graphql.txt                            raft-medium-words-lowercase.txt
+[0m[01;34mapi[0m                                          hashicorp-consul-api.txt               raft-medium-words.txt
+big.txt                                      hashicorp-vault.txt                    raft-small-directories-lowercase.txt
+burp-parameter-names.txt                     JavaScript-Miners.txt                  raft-small-directories.txt
+[01;34mBurpSuite-ParamMiner[0m                         JavaServlets-Common.fuzz.txt           raft-small-extensions-lowercase.txt
+[01;34mCMS[0m                                          [01;34mLEGACY-SERVICES[0m                        raft-small-extensions.txt
+coldfusion.txt                               LinuxFileList.txt                      raft-small-files-lowercase.txt
+combined_directories.txt                     Logins.fuzz.txt                        raft-small-files.txt
+combined_words.txt                           Microsoft-Frontpage.txt                raft-small-words-lowercase.txt
+common-and-dutch.txt                         netware.txt                            raft-small-words.txt
+common-and-french.txt                        ntlm-directories.txt                   README.md
+common-and-italian.txt                       oauth-oidc-scopes.txt                  reverse-proxy-inconsistencies.txt
+common-and-portuguese.txt                    Oracle9i.fuzz.txt                      Roundcube-123.txt
+common-and-spanish.txt                       OracleAppServer.fuzz.txt               rssfeed-files.txt
+common-api-endpoints-mazen160.txt            Passwords.fuzz.txt                     sap-analytics-cloud.txt
+Common-DB-Backups.txt                        [01;34mProgramming-Language-Specific[0m          SAP-NetWeaver.txt
+common_directories.txt                       Proxy-Auto-Configuration-Files.txt     [01;34mService-Specific[0m
+common.txt                                   Public-Source-Repo-Issues.json         SOAP-functions.txt
+default-web-root-directory-linux.txt         quickhits.txt                          tftp.fuzz.txt
+default-web-root-directory-windows.txt       raft-large-directories-lowercase.txt   [01;34mtrickest-robots-disallowed-wordlists[0m
+directory-list-1.0.txt                       raft-large-directories.txt             UnixDotfiles.fuzz.txt
+directory-list-2.3-big.txt                   raft-large-extensions-lowercase.txt    uri-from-top-55-most-popular-apps.txt
+directory-list-2.3-medium.txt                raft-large-extensions.txt              url-params_from-top-55-most-popular-apps.txt
+directory-list-2.3-small.txt                 raft-large-files-lowercase.txt         [01;34mURLs[0m
+directory-list-lowercase-2.3-big.txt         raft-large-files.txt                   versioning_metafiles.txt
+directory-list-lowercase-2.3-medium.txt      raft-large-words-lowercase.txt         vulnerability-scan_j2ee-websites_WEB-INF.txt
+directory-list-lowercase-2.3-small.txt       raft-large-words.txt                   web-all-content-types.txt
+domino-dirs-coldfusion39.txt                 raft-medium-directories-lowercase.txt  web-extensions-big.txt
+domino-endpoints-coldfusion39.txt            raft-medium-directories.txt            web-extensions.txt
+[01;34mDomino-Hunter[0m                                raft-medium-extensions-lowercase.txt   web-mutations.txt
+dsstorewordlist.txt                          raft-medium-extensions.txt             [01;34mWeb-Servers[0m
+[01;34mdutch[0m                                        raft-medium-files-lowercase.txt        wso2-enterprise-integrator.txt
+[01;34mFile-Extensions-Universal-SVNDigger-Project[0m  raft-medium-files.txt
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mgobusteer[K[K[K[K[K[K[K[K[Kgobuster
+[?2004lbash: gobuster: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install gobusterr[K
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following NEW packages will be installed:
+  gobuster
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2,446 kB of archives.
+After this operation, 7,918 kB of additional disk space will be used.
+[33m0% [Working][0m[33m0% [Connecting to deb.parrot.sh][0m                                Get:1 https://deb.parrot.sh/parrot lory/main amd64 gobuster amd64 3.6.0-0parrot1 [2,446 kB]
+[33m                                0% [1 gobuster 0 B/2,446 kB 0%][0m[33m                               100% [Working][0m              Fetched 2,446 kB in 1s (1,880 kB/s)
+
+7[0;29r8[1ASelecting previously unselected package gobuster.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 364874 files and directories currently installed.)
+Preparing to unpack .../gobuster_3.6.0-0parrot1_amd64.deb ...
+7[30;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................................................] 87[30;0f[42m[30mProgress: [ 20%][49m[39m [###########################.............................................................................................................] 8Unpacking gobuster (3.6.0-0parrot1) ...
+7[30;0f[42m[30mProgress: [ 40%][49m[39m [######################################################..................................................................................] 8Setting up gobuster (3.6.0-0parrot1) ...
+7[30;0f[42m[30mProgress: [ 60%][49m[39m [#################################################################################.......................................................] 87[30;0f[42m[30mProgress: [ 80%][49m[39m [############################################################################################################............................] 8
+7[0;30r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mgobuster dir -u $ip -w directory-list-2.3-medium.txt -x ,php,.[1Pphp,..php,.[C[C[C[C[Chtml
+[?2004l===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.193.199
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              php,html
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2KProgress: 63 / 661680 (0.01%)[2KProgress: 129 / 661680 (0.02%)[2KProgress: 191 / 661680 (0.03%)[2KProgress: 251 / 661680 (0.04%)[2KProgress: 315 / 661680 (0.05%)[2KProgress: 381 / 661680 (0.06%)[2KProgress: 441 / 661680 (0.07%)[2KProgress: 502 / 661680 (0.08%)[2KProgress: 571 / 661680 (0.09%)[2KProgress: 631 / 661680 (0.10%)[2KProgress: 692 / 661680 (0.10%)[2KProgress: 761 / 661680 (0.12%)[2K/admin.php           [32m (Status: 200)[0m [Size: 999]
+[2KProgress: 821 / 661680 (0.12%)[2KProgress: 882 / 661680 (0.13%)[2KProgress: 951 / 661680 (0.14%)[2KProgress: 1012 / 661680 (0.15%)[2KProgress: 1065 / 661680 (0.16%)[2KProgress: 1132 / 661680 (0.17%)[2KProgress: 1193 / 661680 (0.18%)[2KProgress: 1258 / 661680 (0.19%)[2KProgress: 1322 / 661680 (0.20%)[2KProgress: 1383 / 661680 (0.21%)[2KProgress: 1448 / 661680 (0.22%)[2KProgress: 1513 / 661680 (0.23%)[2KProgress: 1574 / 661680 (0.24%)[2KProgress: 1639 / 661680 (0.25%)[2KProgress: 1702 / 661680 (0.26%)[2KProgress: 1765 / 661680 (0.27%)[2KProgress: 1830 / 661680 (0.28%)[2KProgress: 1892 / 661680 (0.29%)[2KProgress: 1955 / 661680 (0.30%)[2KProgress: 2020 / 661680 (0.31%)[2KProgress: 2072 / 661680 (0.31%)[2KProgress: 2133 / 661680 (0.32%)[2KProgress: 2192 / 661680 (0.33%)[2KProgress: 2255 / 661680 (0.34%)[2KProgress: 2322 / 661680 (0.35%)[2KProgress: 2382 / 661680 (0.36%)[2KProgress: 2442 / 661680 (0.37%)[2KProgress: 2507 / 661680 (0.38%)[2KProgress: 2572 / 661680 (0.39%)[2KProgress: 2632 / 661680 (0.40%)[2KProgress: 2702 / 661680 (0.41%)[2KProgress: 2762 / 661680 (0.42%)[2KProgress: 2822 / 661680 (0.43%)[2KProgress: 2882 / 661680 (0.44%)[2KProgress: 2952 / 661680 (0.45%)[2KProgress: 3012 / 661680 (0.46%)[2KProgress: 3069 / 661680 (0.46%)[2KProgress: 3133 / 661680 (0.47%)[2KProgress: 3193 / 661680 (0.48%)[2KProgress: 3256 / 661680 (0.49%)[2KProgress: 3323 / 661680 (0.50%)[2KProgress: 3386 / 661680 (0.51%)[2KProgress: 3447 / 661680 (0.52%)[2KProgress: 3507 / 661680 (0.53%)[2KProgress: 3571 / 661680 (0.54%)[2KProgress: 3637 / 661680 (0.55%)[2KProgress: 3698 / 661680 (0.56%)[2KProgress: 3761 / 661680 (0.57%)[2KProgress: 3828 / 661680 (0.58%)[2KProgress: 3889 / 661680 (0.59%)[2KProgress: 3951 / 661680 (0.60%)[2KProgress: 4011 / 661680 (0.61%)[2KProgress: 4071 / 661680 (0.62%)[2KProgress: 4135 / 661680 (0.62%)[2KProgress: 4195 / 661680 (0.63%)[2KProgress: 4257 / 661680 (0.64%)[2KProgress: 4325 / 661680 (0.65%)[2KProgress: 4375 / 661680 (0.66%)[2KProgress: 4435 / 661680 (0.67%)[2KProgress: 4505 / 661680 (0.68%)[2KProgress: 4565 / 661680 (0.69%)[2KProgress: 4625 / 661680 (0.70%)[2KProgress: 4692 / 661680 (0.71%)[2KProgress: 4755 / 661680 (0.72%)[2KProgress: 4815 / 661680 (0.73%)[2KProgress: 4882 / 661680 (0.74%)[2KProgress: 4945 / 661680 (0.75%)[2KProgress: 5005 / 661680 (0.76%)[2KProgress: 5058 / 661680 (0.76%)[2KProgress: 5120 / 661680 (0.77%)[2KProgress: 5188 / 661680 (0.78%)[2KProgress: 5248 / 661680 (0.79%)[2KProgress: 5310 / 661680 (0.80%)[2KProgress: 5378 / 661680 (0.81%)[2KProgress: 5438 / 661680 (0.82%)[2KProgress: 5501 / 661680 (0.83%)[2KProgress: 5564 / 661680 (0.84%)[2KProgress: 5629 / 661680 (0.85%)[2KProgress: 5691 / 661680 (0.86%)[2KProgress: 5753 / 661680 (0.87%)[2KProgress: 5819 / 661680 (0.88%)[2KProgress: 5881 / 661680 (0.89%)[2KProgress: 5944 / 661680 (0.90%)[2KProgress: 6004 / 661680 (0.91%)[2KProgress: 6065 / 661680 (0.92%)[2KProgress: 6127 / 661680 (0.93%)[2KProgress: 6193 / 661680 (0.94%)[2KProgress: 6253 / 661680 (0.95%)[2KProgress: 6315 / 661680 (0.95%)[2KProgress: 6375 / 661680 (0.96%)[2KProgress: 6443 / 661680 (0.97%)[2KProgress: 6505 / 661680 (0.98%)[2KProgress: 6565 / 661680 (0.99%)[2KProgress: 6625 / 661680 (1.00%)[2KProgress: 6686 / 661680 (1.01%)[2KProgress: 6746 / 661680 (1.02%)[2KProgress: 6806 / 661680 (1.03%)[2KProgress: 6876 / 661680 (1.04%)[2KProgress: 6936 / 661680 (1.05%)[2KProgress: 6996 / 661680 (1.06%)[2KProgress: 7056 / 661680 (1.07%)[2KProgress: 7112 / 661680 (1.07%)[2KProgress: 7182 / 661680 (1.09%)[2KProgress: 7242 / 661680 (1.09%)[2KProgress: 7302 / 661680 (1.10%)[2KProgress: 7366 / 661680 (1.11%)[2KProgress: 7432 / 661680 (1.12%)[2KProgress: 7495 / 661680 (1.13%)[2KProgress: 7557 / 661680 (1.14%)[2KProgress: 7622 / 661680 (1.15%)[2KProgress: 7685 / 661680 (1.16%)[2KProgress: 7747 / 661680 (1.17%)[2KProgress: 7812 / 661680 (1.18%)[2KProgress: 7877 / 661680 (1.19%)[2KProgress: 7937 / 661680 (1.20%)[2KProgress: 8002 / 661680 (1.21%)[2KProgress: 8062 / 661680 (1.22%)[2KProgress: 8122 / 661680 (1.23%)[2KProgress: 8185 / 661680 (1.24%)[2KProgress: 8252 / 661680 (1.25%)[2KProgress: 8312 / 661680 (1.26%)[2KProgress: 8372 / 661680 (1.27%)[2KProgress: 8442 / 661680 (1.28%)[2KProgress: 8502 / 661680 (1.28%)[2KProgress: 8566 / 661680 (1.29%)[2KProgress: 8627 / 661680 (1.30%)[2KProgress: 8692 / 661680 (1.31%)[2KProgress: 8756 / 661680 (1.32%)[2KProgress: 8816 / 661680 (1.33%)[2KProgress: 8886 / 661680 (1.34%)[2KProgress: 8946 / 661680 (1.35%)[2KProgress: 9006 / 661680 (1.36%)[2KProgress: 9066 / 661680 (1.37%)[2KProgress: 9121 / 661680 (1.38%)[2KProgress: 9181 / 661680 (1.39%)[2KProgress: 9237 / 661680 (1.40%)[2KProgress: 9294 / 661680 (1.40%)[2KProgress: 9353 / 661680 (1.41%)[2KProgress: 9413 / 661680 (1.42%)[2KProgress: 9473 / 661680 (1.43%)[2KProgress: 9529 / 661680 (1.44%)[2KProgress: 9589 / 661680 (1.45%)[2KProgress: 9649 / 661680 (1.46%)[2KProgress: 9699 / 661680 (1.47%)[2KProgress: 9759 / 661680 (1.47%)[2KProgress: 9809 / 661680 (1.48%)[2KProgress: 9869 / 661680 (1.49%)[2KProgress: 9929 / 661680 (1.50%)[2KProgress: 9989 / 661680 (1.51%)[2KProgress: 10049 / 661680 (1.52%)[2KProgress: 10105 / 661680 (1.53%)[2KProgress: 10165 / 661680 (1.54%)[2KProgress: 10225 / 661680 (1.55%)[2KProgress: 10285 / 661680 (1.55%)[2KProgress: 10345 / 661680 (1.56%)[2KProgress: 10405 / 661680 (1.57%)[2KProgress: 10475 / 661680 (1.58%)[2KProgress: 10535 / 661680 (1.59%)[2KProgress: 10595 / 661680 (1.60%)[2KProgress: 10655 / 661680 (1.61%)[2KProgress: 10715 / 661680 (1.62%)[2KProgress: 10785 / 661680 (1.63%)[2KProgress: 10845 / 661680 (1.64%)[2KProgress: 10905 / 661680 (1.65%)[2KProgress: 10975 / 661680 (1.66%)[2KProgress: 11035 / 661680 (1.67%)[2KProgress: 11089 / 661680 (1.68%)[2KProgress: 11159 / 661680 (1.69%)[2KProgress: 11219 / 661680 (1.70%)[2KProgress: 11284 / 661680 (1.71%)[2KProgress: 11336 / 661680 (1.71%)[2KProgress: 11406 / 661680 (1.72%)[2KProgress: 11466 / 661680 (1.73%)[2KProgress: 11526 / 661680 (1.74%)[2KProgress: 11586 / 661680 (1.75%)[2KProgress: 11636 / 661680 (1.76%)[2KProgress: 11666 / 661680 (1.76%)[2KProgress: 11706 / 661680 (1.77%)[2KProgress: 11766 / 661680 (1.78%)[2KProgress: 11826 / 661680 (1.79%)[2KProgress: 11896 / 661680 (1.80%)[2KProgress: 11956 / 661680 (1.81%)[2KProgress: 12016 / 661680 (1.82%)[2KProgress: 12076 / 661680 (1.83%)[2KProgress: 12132 / 661680 (1.83%)[2KProgress: 12195 / 661680 (1.84%)[2KProgress: 12255 / 661680 (1.85%)[2KProgress: 12322 / 661680 (1.86%)[2KProgress: 12382 / 661680 (1.87%)[2KProgress: 12445 / 661680 (1.88%)[2KProgress: 12506 / 661680 (1.89%)[2KProgress: 12572 / 661680 (1.90%)^C
+[!] Keyboard interrupt detected, terminating.
+[2KProgress: 12612 / 661680 (1.91%)
+===============================================================
+Finished
+===============================================================
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mgobuster dir -u $ip -w directory-list-2.3-medium.txt -x .php,.html[1P[1P[1P[1P[1P[1P[1@s[1@m[1@a[1@l[1@l
+[?2004l===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.193.199
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                directory-list-2.3-small.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              php,html
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2KProgress: 62 / 262995 (0.02%)[2KProgress: 126 / 262995 (0.05%)[2KProgress: 191 / 262995 (0.07%)[2KProgress: 251 / 262995 (0.10%)[2KProgress: 311 / 262995 (0.12%)[2KProgress: 381 / 262995 (0.14%)[2KProgress: 441 / 262995 (0.17%)[2KProgress: 501 / 262995 (0.19%)[2KProgress: 561 / 262995 (0.21%)[2KProgress: 622 / 262995 (0.24%)[2KProgress: 682 / 262995 (0.26%)[2KProgress: 752 / 262995 (0.29%)[2K/admin.php           [32m (Status: 200)[0m [Size: 999]
+[2KProgress: 812 / 262995 (0.31%)[2KProgress: 872 / 262995 (0.33%)[2KProgress: 942 / 262995 (0.36%)[2KProgress: 994 / 262995 (0.38%)[2KProgress: 1057 / 262995 (0.40%)[2KProgress: 1118 / 262995 (0.43%)[2KProgress: 1177 / 262995 (0.45%)[2KProgress: 1226 / 262995 (0.47%)[2KProgress: 1275 / 262995 (0.48%)[2KProgress: 1325 / 262995 (0.50%)[2KProgress: 1385 / 262995 (0.53%)[2KProgress: 1445 / 262995 (0.55%)[2KProgress: 1513 / 262995 (0.58%)[2KProgress: 1575 / 262995 (0.60%)[2KProgress: 1635 / 262995 (0.62%)[2KProgress: 1698 / 262995 (0.65%)[2KProgress: 1765 / 262995 (0.67%)[2KProgress: 1825 / 262995 (0.69%)[2KProgress: 1885 / 262995 (0.72%)[2KProgress: 1955 / 262995 (0.74%)[2KProgress: 2015 / 262995 (0.77%)[2KProgress: 2070 / 262995 (0.79%)[2KProgress: 2130 / 262995 (0.81%)[2KProgress: 2200 / 262995 (0.84%)[2KProgress: 2260 / 262995 (0.86%)[2KProgress: 2320 / 262995 (0.88%)[2KProgress: 2390 / 262995 (0.91%)[2KProgress: 2450 / 262995 (0.93%)[2KProgress: 2510 / 262995 (0.95%)[2KProgress: 2571 / 262995 (0.98%)[2KProgress: 2640 / 262995 (1.00%)[2KProgress: 2700 / 262995 (1.03%)[2KProgress: 2761 / 262995 (1.05%)[2KProgress: 2824 / 262995 (1.07%)[2KProgress: 2890 / 262995 (1.10%)[2KProgress: 2951 / 262995 (1.12%)[2KProgress: 3011 / 262995 (1.14%)[2KProgress: 3072 / 262995 (1.17%)[2KProgress: 3137 / 262995 (1.19%)[2KProgress: 3197 / 262995 (1.22%)[2KProgress: 3262 / 262995 (1.24%)[2KProgress: 3319 / 262995 (1.26%)[2KProgress: 3383 / 262995 (1.29%)[2KProgress: 3447 / 262995 (1.31%)[2KProgress: 3507 / 262995 (1.33%)[2KProgress: 3571 / 262995 (1.36%)[2KProgress: 3637 / 262995 (1.38%)[2KProgress: 3697 / 262995 (1.41%)[2KProgress: 3758 / 262995 (1.43%)[2KProgress: 3819 / 262995 (1.45%)[2KProgress: 3887 / 262995 (1.48%)[2KProgress: 3948 / 262995 (1.50%)[2KProgress: 4008 / 262995 (1.52%)[2KProgress: 4070 / 262995 (1.55%)[2KProgress: 4131 / 262995 (1.57%)[2KProgress: 4191 / 262995 (1.59%)[2KProgress: 4261 / 262995 (1.62%)[2KProgress: 4321 / 262995 (1.64%)[2KProgress: 4382 / 262995 (1.67%)[2KProgress: 4442 / 262995 (1.69%)[2KProgress: 4512 / 262995 (1.72%)[2KProgress: 4568 / 262995 (1.74%)[2KProgress: 4625 / 262995 (1.76%)[2KProgress: 4693 / 262995 (1.78%)[2KProgress: 4753 / 262995 (1.81%)[2KProgress: 4813 / 262995 (1.83%)[2KProgress: 4883 / 262995 (1.86%)[2KProgress: 4943 / 262995 (1.88%)[2KProgress: 5003 / 262995 (1.90%)[2KProgress: 5067 / 262995 (1.93%)[2KProgress: 5127 / 262995 (1.95%)[2KProgress: 5187 / 262995 (1.97%)[2KProgress: 5257 / 262995 (2.00%)[2KProgress: 5317 / 262995 (2.02%)[2KProgress: 5377 / 262995 (2.04%)[2KProgress: 5447 / 262995 (2.07%)[2KProgress: 5507 / 262995 (2.09%)[2KProgress: 5567 / 262995 (2.12%)[2KProgress: 5637 / 262995 (2.14%)[2KProgress: 5697 / 262995 (2.17%)[2KProgress: 5747 / 262995 (2.19%)[2KProgress: 5817 / 262995 (2.21%)[2KProgress: 5877 / 262995 (2.23%)[2KProgress: 5937 / 262995 (2.26%)[2KProgress: 5997 / 262995 (2.28%)[2KProgress: 6059 / 262995 (2.30%)[2KProgress: 6119 / 262995 (2.33%)[2KProgress: 6179 / 262995 (2.35%)[2KProgress: 6249 / 262995 (2.38%)[2KProgress: 6309 / 262995 (2.40%)[2KProgress: 6369 / 262995 (2.42%)[2KProgress: 6429 / 262995 (2.44%)[2KProgress: 6489 / 262995 (2.47%)[2KProgress: 6559 / 262995 (2.49%)[2KProgress: 6619 / 262995 (2.52%)[2KProgress: 6679 / 262995 (2.54%)[2KProgress: 6739 / 262995 (2.56%)[2KProgress: 6809 / 262995 (2.59%)[2KProgress: 6869 / 262995 (2.61%)[2KProgress: 6929 / 262995 (2.63%)[2KProgress: 6999 / 262995 (2.66%)[2KProgress: 7059 / 262995 (2.68%)[2KProgress: 7113 / 262995 (2.70%)[2KProgress: 7182 / 262995 (2.73%)[2KProgress: 7243 / 262995 (2.75%)[2KProgress: 7293 / 262995 (2.77%)[2KProgress: 7353 / 262995 (2.80%)[2KProgress: 7413 / 262995 (2.82%)[2KProgress: 7473 / 262995 (2.84%)[2KProgress: 7543 / 262995 (2.87%)[2KProgress: 7603 / 262995 (2.89%)[2KProgress: 7663 / 262995 (2.91%)[2KProgress: 7733 / 262995 (2.94%)[2KProgress: 7793 / 262995 (2.96%)[2KProgress: 7853 / 262995 (2.99%)[2KProgress: 7913 / 262995 (3.01%)[2KProgress: 7983 / 262995 (3.04%)[2KProgress: 8043 / 262995 (3.06%)[2KProgress: 8098 / 262995 (3.08%)[2KProgress: 8165 / 262995 (3.10%)[2KProgress: 8227 / 262995 (3.13%)[2KProgress: 8288 / 262995 (3.15%)[2KProgress: 8348 / 262995 (3.17%)[2KProgress: 8417 / 262995 (3.20%)[2KProgress: 8478 / 262995 (3.22%)[2KProgress: 8538 / 262995 (3.25%)[2KProgress: 8598 / 262995 (3.27%)[2KProgress: 8658 / 262995 (3.29%)[2KProgress: 8728 / 262995 (3.32%)[2KProgress: 8786 / 262995 (3.34%)[2KProgress: 8848 / 262995 (3.36%)[2KProgress: 8908 / 262995 (3.39%)[2KProgress: 8978 / 262995 (3.41%)[2KProgress: 9038 / 262995 (3.44%)[2KProgress: 9093 / 262995 (3.46%)[2KProgress: 9153 / 262995 (3.48%)[2KProgress: 9223 / 262995 (3.51%)[2KProgress: 9283 / 262995 (3.53%)[2KProgress: 9343 / 262995 (3.55%)[2KProgress: 9413 / 262995 (3.58%)[2KProgress: 9473 / 262995 (3.60%)[2KProgress: 9533 / 262995 (3.62%)[2KProgress: 9595 / 262995 (3.65%)[2KProgress: 9663 / 262995 (3.67%)[2KProgress: 9723 / 262995 (3.70%)[2KProgress: 9785 / 262995 (3.72%)[2KProgress: 9846 / 262995 (3.74%)[2KProgress: 9915 / 262995 (3.77%)[2KProgress: 9975 / 262995 (3.79%)[2KProgress: 10037 / 262995 (3.82%)[2KProgress: 10092 / 262995 (3.84%)[2KProgress: 10160 / 262995 (3.86%)[2KProgress: 10220 / 262995 (3.89%)[2KProgress: 10282 / 262995 (3.91%)[2KProgress: 10342 / 262995 (3.93%)[2KProgress: 10402 / 262995 (3.96%)[2KProgress: 10462 / 262995 (3.98%)[2KProgress: 10522 / 262995 (4.00%)[2KProgress: 10592 / 262995 (4.03%)[2KProgress: 10652 / 262995 (4.05%)[2KProgress: 10712 / 262995 (4.07%)[2KProgress: 10772 / 262995 (4.10%)[2KProgress: 10832 / 262995 (4.12%)[2KProgress: 10885 / 262995 (4.14%)[2KProgress: 10935 / 262995 (4.16%)[2KProgress: 10995 / 262995 (4.18%)[2KProgress: 11065 / 262995 (4.21%)[2KProgress: 11123 / 262995 (4.23%)[2KProgress: 11183 / 262995 (4.25%)[2KProgress: 11253 / 262995 (4.28%)[2KProgress: 11313 / 262995 (4.30%)[2KProgress: 11373 / 262995 (4.32%)[2KProgress: 11434 / 262995 (4.35%)[2KProgress: 11503 / 262995 (4.37%)[2KProgress: 11563 / 262995 (4.40%)[2KProgress: 11624 / 262995 (4.42%)[2KProgress: 11684 / 262995 (4.44%)[2KProgress: 11753 / 262995 (4.47%)[2KProgress: 11814 / 262995 (4.49%)[2KProgress: 11874 / 262995 (4.51%)[2KProgress: 11935 / 262995 (4.54%)[2KProgress: 11995 / 262995 (4.56%)[2KProgress: 12063 / 262995 (4.59%)[2KProgress: 12124 / 262995 (4.61%)[2KProgress: 12184 / 262995 (4.63%)[2KProgress: 12244 / 262995 (4.66%)[2KProgress: 12307 / 262995 (4.68%)[2KProgress: 12374 / 262995 (4.71%)[2KProgress: 12434 / 262995 (4.73%)[2KProgress: 12495 / 262995 (4.75%)[2KProgress: 12564 / 262995 (4.78%)[2KProgress: 12624 / 262995 (4.80%)[2KProgress: 12688 / 262995 (4.82%)[2KProgress: 12753 / 262995 (4.85%)[2KProgress: 12814 / 262995 (4.87%)[2KProgress: 12877 / 262995 (4.90%)[2KProgress: 12944 / 262995 (4.92%)[2KProgress: 13003 / 262995 (4.94%)[2KProgress: 13065 / 262995 (4.97%)[2KProgress: 13127 / 262995 (4.99%)[2KProgress: 13190 / 262995 (5.02%)[2KProgress: 13256 / 262995 (5.04%)[2KProgress: 13320 / 262995 (5.06%)[2KProgress: 13380 / 262995 (5.09%)[2KProgress: 13440 / 262995 (5.11%)[2KProgress: 13500 / 262995 (5.13%)[2KProgress: 13570 / 262995 (5.16%)[2KProgress: 13630 / 262995 (5.18%)[2KProgress: 13690 / 262995 (5.21%)[2KProgress: 13751 / 262995 (5.23%)[2KProgress: 13820 / 262995 (5.25%)[2KProgress: 13881 / 262995 (5.28%)[2KProgress: 13941 / 262995 (5.30%)[2KProgress: 14006 / 262995 (5.33%)[2KProgress: 14070 / 262995 (5.35%)[2KProgress: 14129 / 262995 (5.37%)[2KProgress: 14195 / 262995 (5.40%)[2KProgress: 14259 / 262995 (5.42%)[2KProgress: 14320 / 262995 (5.44%)[2KProgress: 14386 / 262995 (5.47%)[2KProgress: 14449 / 262995 (5.49%)[2KProgress: 14512 / 262995 (5.52%)[2KProgress: 14573 / 262995 (5.54%)[2KProgress: 14640 / 262995 (5.57%)[2KProgress: 14700 / 262995 (5.59%)[2KProgress: 14762 / 262995 (5.61%)[2KProgress: 14822 / 262995 (5.64%)[2KProgress: 14882 / 262995 (5.66%)[2KProgress: 14952 / 262995 (5.69%)[2KProgress: 15011 / 262995 (5.71%)[2KProgress: 15070 / 262995 (5.73%)[2KProgress: 15131 / 262995 (5.75%)[2KProgress: 15199 / 262995 (5.78%)[2KProgress: 15259 / 262995 (5.80%)[2KProgress: 15321 / 262995 (5.83%)[2KProgress: 15389 / 262995 (5.85%)[2KProgress: 15451 / 262995 (5.88%)[2KProgress: 15511 / 262995 (5.90%)[2KProgress: 15581 / 262995 (5.92%)[2KProgress: 15641 / 262995 (5.95%)[2KProgress: 15701 / 262995 (5.97%)[2KProgress: 15768 / 262995 (6.00%)[2KProgress: 15831 / 262995 (6.02%)[2KProgress: 15891 / 262995 (6.04%)[2KProgress: 15956 / 262995 (6.07%)[2KProgress: 16020 / 262995 (6.09%)[2KProgress: 16083 / 262995 (6.12%)[2KProgress: 16143 / 262995 (6.14%)[2KProgress: 16208 / 262995 (6.16%)[2KProgress: 16273 / 262995 (6.19%)[2KProgress: 16333 / 262995 (6.21%)[2KProgress: 16398 / 262995 (6.24%)[2KProgress: 16463 / 262995 (6.26%)[2KProgress: 16523 / 262995 (6.28%)[2KProgress: 16583 / 262995 (6.31%)[2KProgress: 16648 / 262995 (6.33%)[2KProgress: 16713 / 262995 (6.35%)[2KProgress: 16773 / 262995 (6.38%)[2KProgress: 16838 / 262995 (6.40%)[2KProgress: 16903 / 262995 (6.43%)[2KProgress: 16963 / 262995 (6.45%)[2KProgress: 17023 / 262995 (6.47%)[2KProgress: 17092 / 262995 (6.50%)[2KProgress: 17150 / 262995 (6.52%)[2KProgress: 17212 / 262995 (6.54%)[2KProgress: 17274 / 262995 (6.57%)[2KProgress: 17340 / 262995 (6.59%)[2KProgress: 17404 / 262995 (6.62%)[2KProgress: 17470 / 262995 (6.64%)[2KProgress: 17532 / 262995 (6.67%)[2KProgress: 17595 / 262995 (6.69%)[2KProgress: 17662 / 262995 (6.72%)[2KProgress: 17724 / 262995 (6.74%)[2KProgress: 17787 / 262995 (6.76%)[2KProgress: 17852 / 262995 (6.79%)[2KProgress: 17917 / 262995 (6.81%)[2KProgress: 17977 / 262995 (6.84%)[2KProgress: 18041 / 262995 (6.86%)[2KProgress: 18105 / 262995 (6.88%)[2KProgress: 18169 / 262995 (6.91%)[2KProgress: 18229 / 262995 (6.93%)[2KProgress: 18289 / 262995 (6.95%)[2KProgress: 18349 / 262995 (6.98%)[2KProgress: 18418 / 262995 (7.00%)[2KProgress: 18479 / 262995 (7.03%)[2KProgress: 18539 / 262995 (7.05%)[2KProgress: 18599 / 262995 (7.07%)[2KProgress: 18669 / 262995 (7.10%)[2KProgress: 18729 / 262995 (7.12%)[2KProgress: 18789 / 262995 (7.14%)[2KProgress: 18858 / 262995 (7.17%)[2KProgress: 18918 / 262995 (7.19%)[2KProgress: 18978 / 262995 (7.22%)[2KProgress: 19038 / 262995 (7.24%)[2KProgress: 19098 / 262995 (7.26%)[2KProgress: 19157 / 262995 (7.28%)[2KProgress: 19217 / 262995 (7.31%)[2KProgress: 19277 / 262995 (7.33%)[2KProgress: 19347 / 262995 (7.36%)[2KProgress: 19407 / 262995 (7.38%)[2KProgress: 19467 / 262995 (7.40%)[2KProgress: 19527 / 262995 (7.42%)[2KProgress: 19587 / 262995 (7.45%)[2KProgress: 19657 / 262995 (7.47%)[2KProgress: 19717 / 262995 (7.50%)[2KProgress: 19777 / 262995 (7.52%)[2KProgress: 19845 / 262995 (7.55%)[2KProgress: 19906 / 262995 (7.57%)[2KProgress: 19966 / 262995 (7.59%)[2KProgress: 20026 / 262995 (7.61%)[2KProgress: 20093 / 262995 (7.64%)[2KProgress: 20155 / 262995 (7.66%)[2KProgress: 20215 / 262995 (7.69%)[2KProgress: 20284 / 262995 (7.71%)[2KProgress: 20344 / 262995 (7.74%)[2KProgress: 20404 / 262995 (7.76%)[2KProgress: 20465 / 262995 (7.78%)[2KProgress: 20529 / 262995 (7.81%)[2KProgress: 20595 / 262995 (7.83%)[2KProgress: 20655 / 262995 (7.85%)[2KProgress: 20725 / 262995 (7.88%)[2KProgress: 20785 / 262995 (7.90%)[2KProgress: 20845 / 262995 (7.93%)[2KProgress: 20906 / 262995 (7.95%)[2KProgress: 20974 / 262995 (7.98%)[2KProgress: 21026 / 262995 (7.99%)[2KProgress: 21084 / 262995 (8.02%)[2KProgress: 21144 / 262995 (8.04%)[2KProgress: 21214 / 262995 (8.07%)[2KProgress: 21274 / 262995 (8.09%)[2KProgress: 21336 / 262995 (8.11%)[2KProgress: 21404 / 262995 (8.14%)[2KProgress: 21464 / 262995 (8.16%)[2KProgress: 21529 / 262995 (8.19%)[2KProgress: 21590 / 262995 (8.21%)[2KProgress: 21658 / 262995 (8.24%)[2KProgress: 21719 / 262995 (8.26%)[2KProgress: 21784 / 262995 (8.28%)[2KProgress: 21846 / 262995 (8.31%)[2KProgress: 21910 / 262995 (8.33%)[2KProgress: 21974 / 262995 (8.36%)[2KProgress: 22036 / 262995 (8.38%)[2KProgress: 22096 / 262995 (8.40%)[2KProgress: 22165 / 262995 (8.43%)[2KProgress: 22225 / 262995 (8.45%)[2KProgress: 22285 / 262995 (8.47%)[2KProgress: 22345 / 262995 (8.50%)[2KProgress: 22405 / 262995 (8.52%)[2KProgress: 22465 / 262995 (8.54%)[2KProgress: 22535 / 262995 (8.57%)[2KProgress: 22595 / 262995 (8.59%)[2KProgress: 22655 / 262995 (8.61%)[2KProgress: 22705 / 262995 (8.63%)[2KProgress: 22775 / 262995 (8.66%)[2KProgress: 22835 / 262995 (8.68%)[2KProgress: 22895 / 262995 (8.71%)[2KProgress: 22965 / 262995 (8.73%)[2KProgress: 23023 / 262995 (8.75%)[2KProgress: 23083 / 262995 (8.78%)[2KProgress: 23142 / 262995 (8.80%)[2KProgress: 23212 / 262995 (8.83%)[2KProgress: 23272 / 262995 (8.85%)[2KProgress: 23332 / 262995 (8.87%)[2KProgress: 23393 / 262995 (8.89%)[2KProgress: 23454 / 262995 (8.92%)[2KProgress: 23514 / 262995 (8.94%)[2KProgress: 23582 / 262995 (8.97%)[2KProgress: 23642 / 262995 (8.99%)[2KProgress: 23704 / 262995 (9.01%)[2KProgress: 23764 / 262995 (9.04%)[2KProgress: 23824 / 262995 (9.06%)[2KProgress: 23894 / 262995 (9.09%)[2KProgress: 23953 / 262995 (9.11%)[2KProgress: 24016 / 262995 (9.13%)[2KProgress: 24083 / 262995 (9.16%)[2KProgress: 24140 / 262995 (9.18%)[2KProgress: 24190 / 262995 (9.20%)[2KProgress: 24252 / 262995 (9.22%)[2KProgress: 24320 / 262995 (9.25%)[2KProgress: 24380 / 262995 (9.27%)[2KProgress: 24440 / 262995 (9.29%)[2KProgress: 24510 / 262995 (9.32%)[2KProgress: 24570 / 262995 (9.34%)[2KProgress: 24631 / 262995 (9.37%)[2KProgress: 24700 / 262995 (9.39%)[2KProgress: 24760 / 262995 (9.41%)[2KProgress: 24820 / 262995 (9.44%)[2KProgress: 24881 / 262995 (9.46%)[2KProgress: 24941 / 262995 (9.48%)[2KProgress: 25011 / 262995 (9.51%)[2KProgress: 25071 / 262995 (9.53%)[2KProgress: 25129 / 262995 (9.55%)[2KProgress: 25192 / 262995 (9.58%)[2KProgress: 25254 / 262995 (9.60%)[2KProgress: 25319 / 262995 (9.63%)[2KProgress: 25382 / 262995 (9.65%)[2KProgress: 25445 / 262995 (9.68%)[2KProgress: 25511 / 262995 (9.70%)[2KProgress: 25572 / 262995 (9.72%)[2KProgress: 25639 / 262995 (9.75%)[2KProgress: 25699 / 262995 (9.77%)[2KProgress: 25752 / 262995 (9.79%)[2KProgress: 25812 / 262995 (9.81%)[2KProgress: 25863 / 262995 (9.83%)[2KProgress: 25923 / 262995 (9.86%)[2KProgress: 25972 / 262995 (9.88%)[2KProgress: 26032 / 262995 (9.90%)[2KProgress: 26101 / 262995 (9.92%)[2KProgress: 26156 / 262995 (9.95%)[2KProgress: 26221 / 262995 (9.97%)[2KProgress: 26251 / 262995 (9.98%)[2KProgress: 26251 / 262995 (9.98%)[2KProgress: 26281 / 262995 (9.99%)[2KProgress: 26341 / 262995 (10.02%)[2KProgress: 26401 / 262995 (10.04%)[2KProgress: 26462 / 262995 (10.06%)[2KProgress: 26531 / 262995 (10.09%)[2KProgress: 26592 / 262995 (10.11%)[2KProgress: 26652 / 262995 (10.13%)[2KProgress: 26712 / 262995 (10.16%)[2KProgress: 26782 / 262995 (10.18%)[2KProgress: 26842 / 262995 (10.21%)[2KProgress: 26902 / 262995 (10.23%)[2KProgress: 26961 / 262995 (10.25%)[2KProgress: 27031 / 262995 (10.28%)[2KProgress: 27091 / 262995 (10.30%)[2KProgress: 27150 / 262995 (10.32%)[2KProgress: 27215 / 262995 (10.35%)[2KProgress: 27280 / 262995 (10.37%)[2KProgress: 27340 / 262995 (10.40%)[2KProgress: 27406 / 262995 (10.42%)[2KProgress: 27470 / 262995 (10.45%)[2KProgress: 27530 / 262995 (10.47%)[2KProgress: 27600 / 262995 (10.49%)[2KProgress: 27660 / 262995 (10.52%)[2KProgress: 27720 / 262995 (10.54%)[2KProgress: 27780 / 262995 (10.56%)[2KProgress: 27850 / 262995 (10.59%)[2KProgress: 27910 / 262995 (10.61%)[2KProgress: 27970 / 262995 (10.64%)[2KProgress: 28034 / 262995 (10.66%)[2KProgress: 28098 / 262995 (10.68%)[2KProgress: 28158 / 262995 (10.71%)^Z
+[1]+  Stopped                 gobuster dir -u $ip -w directory-list-2.3-small.txt -x .php,.html
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcut[Kur[K[Krl $ip/admin.php
+[?2004l<!DOCTYPE html>
+<html>
+<title>Admin Console</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<body class="w3-container" style="background-color:#F6F6F6;">
+
+<h2 align="center">Admin Console Login</h2>
+
+
+<div id="id01" class="w3-container">
+  <form method="post">
+  <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+    <div class="w3-container">
+      <div class="w3-section">
+        <label><b>Username</b></label>
+        <input class="w3-input w3-border w3-hover-border-black w3-margin-bottom" type="text" placeholder="Enter Username" name="username">
+
+        <label><b>Password</b></label>
+        <input class="w3-input w3-border w3-hover-border-black" type="password" placeholder="Enter Password" name="password">
+        
+        <input type="submit" class="w3-btn w3-btn-block w3-green w3-section" value="Login">
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+            
+</body>
+</html> 
+
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcurk[Kl -I $ip/admin.php
+[?2004lHTTP/1.1 200 OK
+[1mServer[0m: nginx/1.14.2
+[1mDate[0m: Thu, 05 Jun 2025 02:44:17 GMT
+[1mContent-Type[0m: text/html; charset=UTF-8
+[1mConnection[0m: keep-alive
+
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+There are stopped jobs.
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/SecLists/Discovery/Web-Content[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+
+Script done on 2025-06-04 22:47:07-04:00 [COMMAND_EXIT_CODE="1"]

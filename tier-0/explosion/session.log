@@ -1,0 +1,581 @@
+Script started on 2025-05-31 16:47:31-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="126" LINES="22"]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip= [K10.129.197.6
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -F $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-05-31 16:48 EDT
+Nmap scan report for 10.129.197.6
+Host is up (0.091s latency).
+Not shown: 96 closed tcp ports (reset)
+PORT     STATE SERVICE
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+
+Nmap done: 1 IP address (1 host up) scanned in 0.67 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt  ins[K[K[K[Kinstall xfreerdp
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+[1;31mE: [0mUnable to locate package xfreerdp[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mxfreerdp
+[?2004lbash: xfreerdp: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mpt[K[Kapt install rdp
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+[1;31mE: [0mUnable to locate package rdp[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt search rdp
+[?2004lSorting... 0%Sorting... 0%Sorting... 0%Sorting... Done
+Full Text Search... 50%Full Text Search... 50%Full Text Search... 85%Full Text Search... Done
+[32mabiword[0m/parrot6 3.0.5~dfsg-3.2 amd64
+  efficient, featureful word processor with collaboration
+
+[32marctica-greeter[0m/parrot6 0.99.3.0-1+deb12u2 amd64
+  LightDM Arctica Greeter
+
+[32marctica-greeter-remote-logon[0m/parrot6 0.99.3.0-1+deb12u2 all
+  LightDM Arctica Greeter - Remote Login Support
+
+[32mcardpeek[0m/parrot6 0.8.4-1.1+b1 amd64
+  Tool to read the contents of ISO7816 smartcards
+
+[32mcardpeek-data[0m/parrot6 0.8.4-1.1 all
+  Tool to read the contents of ISO7816 smartcards - data files
+
+[32mchordii[0m/parrot6 4.5.3+repack-0.2 amd64
+  Text file (chordpro format) to music sheet converter
+
+[32mcmseek[0m/parrot6 1.1.3-0parrot1 all
+  CMS Detection and Exploitation suite
+
+[32mcrowbar[0m/parrot6 4.2-0parrot1 all
+  Brute forcing tool
+
+[32mebook-speaker[0m/parrot6 6.2.0-4+deb12u1 amd64
+  eBook reader that reads aloud in a synthetic voice
+
+[32melpa-php-mode[0m/parrot6 1.24.2-2 all
+  PHP Mode for GNU Emacs
+
+[32mfirm-phoenix-ware[0m/parrot6 4.7.5+repack-2 all
+  firmware necessary for boxes issued by project PHOENIX
+
+[32mfoobillardplus[0m/parrot6 3.43~svn170+dfsg-7 amd64
+  3D OpenGL Billiard Game
+
+[32mfoobillardplus-data[0m/parrot6 3.43~svn170+dfsg-7 all
+  3D OpenGL Billiard Game -- data files
+
+[32mfreerdp2-dev[0m/parrot6 2.10.0+dfsg1-1 amd64
+  Free Remote Desktop Protocol library (development files)
+
+[32mfreerdp2-shadow-x11[0m/parrot6 2.10.0+dfsg1-1 amd64
+  FreeRDP x11 shadowing server
+
+[32mfreerdp2-wayland[0m/parrot6 2.10.0+dfsg1-1 amd64
+  RDP client for Windows Terminal Services (wayland client)
+
+[32mfreerdp2-x11[0m/parrot6 2.10.0+dfsg1-1 amd64
+  RDP client for Windows Terminal Services (X11 client)
+
+[32mfreerdp3-dev[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Free Remote Desktop Protocol library (development files)
+
+[32mfreerdp3-proxy[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  FreeRDP proxy server
+
+[32mfreerdp3-proxy-modules[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  FreeRDP Remote Desktop Protocol proxy module libraries
+
+[32mfreerdp3-sdl[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  RDP client for Windows Terminal Services (SDL client)
+
+[32mfreerdp3-shadow-x11[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  FreeRDP x11 shadowing server
+
+[32mfreerdp3-wayland[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  RDP client for Windows Terminal Services (wayland client)
+
+[32mfreerdp3-x11[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  RDP client for Windows Terminal Services (X11 client)
+
+[32mgnome-connections[0m/parrot6 43.0-1 amd64
+  Simple GNOME app to access remote computers
+
+[32mgnome-remote-desktop[0m/parrot6 43.3-1 amd64
+  Remote desktop daemon for GNOME using PipeWire
+
+[32mgnumeric[0m/parrot6 1.12.55-1 amd64
+  spreadsheet application for GNOME - main program
+
+[32mhashcat[0m/parrot6 6.2.6+ds1-1+b1 amd64
+  World's fastest and most advanced password recovery utility
+
+[32mhydra[0m/parrot6,now 9.4-1 amd64 [installed]
+  very fast network logon cracker
+
+[32mhydra-gtk[0m/parrot6 9.4-1 amd64
+  very fast network logon cracker - GTK+ based GUI
+
+[32micinga-php-thirdparty[0m/parrot6 0.11.0-2 all
+  Icinga PHP Thirdparty libraries for Icinga Web 2
+
+[32mirpas[0m/parrot6 0.10-9 amd64
+  Internetwork Routing Protocol Attack Suite
+
+[32mkraken2[0m/parrot6 2.1.2-2 amd64
+  taxonomic classification system using exact k-mer matches
+
+[32mkrdc[0m/parrot6 4:22.12.3-1 amd64
+  Remote Desktop Connection client
+
+[32mlibfreerdp-client2-2[0m/parrot6,now 2.10.0+dfsg1-1 amd64 [installed,automatic]
+  Free Remote Desktop Protocol library (client library)
+
+[32mlibfreerdp-client3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Free Remote Desktop Protocol library (client library)
+
+[32mlibfreerdp-server-proxy3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Free Remote Desktop Protocol library (proxy library)
+
+[32mlibfreerdp-server2-2[0m/parrot6 2.10.0+dfsg1-1 amd64
+  Free Remote Desktop Protocol library (server library)
+
+[32mlibfreerdp-server3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Free Remote Desktop Protocol library (server library)
+
+[32mlibfreerdp-shadow-subsystem2-2[0m/parrot6 2.10.0+dfsg1-1 amd64
+  FreeRDP Remote Desktop Protocol shadow subsystem libraries
+
+[32mlibfreerdp-shadow-subsystem3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  FreeRDP Remote Desktop Protocol shadow subsystem libraries
+
+[32mlibfreerdp-shadow2-2[0m/parrot6 2.10.0+dfsg1-1 amd64
+  FreeRDP Remote Desktop Protocol shadow libraries
+
+[32mlibfreerdp-shadow3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  FreeRDP Remote Desktop Protocol shadow libraries
+
+[32mlibfreerdp2-2[0m/parrot6,now 2.10.0+dfsg1-1 amd64 [installed,automatic]
+  Free Remote Desktop Protocol library (core library)
+
+[32mlibfreerdp3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Free Remote Desktop Protocol library (core library)
+
+[32mlibghc-psqueues-dev[0m/parrot6 0.2.7.3-1+b2 amd64
+  Pure priority search queues
+
+[32mlibghc-psqueues-doc[0m/parrot6 0.2.7.3-1 all
+  Pure priority search queues; documentation
+
+[32mlibghc-psqueues-prof[0m/parrot6 0.2.7.3-1+b2 amd64
+  Pure priority search queues; profiling libraries
+
+[32mlibkmnkbp-dev[0m/parrot6 16.0.138-4 amd64
+  Development files for Keyman keyboard processing library
+
+[32mlibkmnkbp0-0[0m/parrot6 16.0.138-4 amd64
+  Keyman keyboard processing library
+
+[32mlibmarkdown-php[0m/parrot6 1.0.2-3 all
+  PHP library for rendering Markdown data
+
+[32mliborcus-0.17-0[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents
+
+[32mliborcus-bin[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents - binaries
+
+[32mliborcus-dev[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents -- development
+
+[32mliborcus-doc[0m/parrot6 0.17.2-2 all
+  library for processing spreadsheet documents - documentation
+
+[32mliborcus-mso-0.17-0[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents - MS Office encryption library
+
+[32mliborcus-parser-0.17-0[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents - parser library
+
+[32mliborcus-spreadsheet-model-0.17-0[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents - spreadsheet model library
+
+[32mlibpam-freerdp2[0m/parrot6 2.0.0-3 amd64
+  PAM Module to auth against an RDP server using FreeRDPv2
+
+[32mlibpam-freerdp2-dev[0m/parrot6 2.0.0-3 amd64
+  PAM Module to auth against an RDP server using FreeRDPv2 (development files)
+
+[32mlibpipewire-0.3-modules-xrdp[0m/parrot6-backports 0.2-2~bpo12+1 amd64
+  libraries for the PipeWire multimedia server - xrdp modules
+
+[32mlibrdp-taxonomy-tree-java[0m/parrot6 1.2.0-6 all
+  taxonomy tree library from Ribosomal Database Project (RDP)
+
+[32mlibreoffice-writer[0m/parrot6-backports,now 4:25.2.3-2~bpo12+1 amd64 [installed,automatic]
+  office productivity suite -- word processor
+
+[32mlibreoffice-writer-nogui[0m/parrot6,parrot6-security 4:7.4.7-1+deb12u8 amd64
+  office productivity suite -- word processor (no GUI variant)
+
+[32mlibrrdp-perl[0m/parrot6 1.7.2-4 all
+  time-series data storage and display system (Perl interface, piped)
+
+[32mlibtext-recordparser-perl[0m/parrot6 1.6.5-4 all
+  module to parse record-oriented data in a text file
+
+[32mlibwinpr-tools2-2[0m/parrot6 2.10.0+dfsg1-1 amd64
+  Windows Portable Runtime Tools library
+
+[32mlibwinpr-tools3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Windows Portable Runtime Tools library
+
+[32mlibwinpr2-2[0m/parrot6,now 2.10.0+dfsg1-1 amd64 [installed,automatic]
+  Windows Portable Runtime library
+
+[32mlibwinpr2-dev[0m/parrot6 2.10.0+dfsg1-1 amd64
+  Windows Portable Runtime library (development files)
+
+[32mlibwinpr3-3[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Windows Portable Runtime library
+
+[32mlibwinpr3-dev[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Windows Portable Runtime library (development files)
+
+[32mlibwpd-0.10-10[0m/parrot6,now 0.10.3-2+b1 amd64 [installed,automatic]
+  Library for handling WordPerfect documents (shared library)
+
+[32mlibwpd-dev[0m/parrot6 0.10.3-2+b1 amd64
+  Library for handling WordPerfect documents (development)
+
+[32mlibwpd-doc[0m/parrot6 0.10.3-2 all
+  Library for handling WordPerfect documents (documentation)
+
+[32mlibwpd-tools[0m/parrot6 0.10.3-2+b1 amd64
+  Tools from libwpd for converting WordPerfect to HTML/RAW/Text
+
+[32mlibwpg-0.3-3[0m/parrot6,now 0.3.3-1 amd64 [installed,automatic]
+  WordPerfect graphics import/convert library (shared library)
+
+[32mlibwpg-dev[0m/parrot6 0.3.3-1 amd64
+  WordPerfect graphics import/convert library (development)
+
+[32mlibwpg-doc[0m/parrot6 0.3.3-1 all
+  WordPerfect graphics import/convert library (documentation)
+
+[32mlibwpg-tools[0m/parrot6 0.3.3-1 amd64
+  Tools from libwpg for converting WP Graphics to Raw/SVG
+
+[32mlibxrdposix3[0m/parrot6 5.5.3-1 amd64
+  Posix interface library for xrootd
+
+[32mlightdm-remote-session-freerdp2[0m/parrot6 2.0.0-1+b1 amd64
+  LightDM Remote Logon Support for RDP sessions
+
+[32mmupen64plus-video-z64[0m/parrot6 2.5.9+9+g5dba5bd-2 amd64
+  low-level rdp emulation for mupen64plus
+
+[32mncrack[0m/parrot6 0.7+debian-4 amd64
+  High-speed network authentication cracking tool
+
+[32moffice2003-schemas[0m/parrot6 1.0+ds-1 all
+  Office 2003 XML Schemas - xsd
+
+[32mpatator[0m/parrot6 0.9-3 all
+  Multi-purpose brute-forcer
+
+[32mpipewire-module-xrdp[0m/parrot6 0.0~git20230609.e9c6c05-0parrot1 amd64
+  xrdp module for PipeWire sound server
+
+[32mpulseaudio-module-xrdp[0m/parrot6 0.6-0parrot1 amd64
+  xrdp module for PulseAudio sound server
+
+[32mpython3-aardwolf[0m/parrot6 0.2.2-0parrot1 amd64
+  Asynchronous RDP/VNC client (Python 3)
+
+[32mpython3-orcus[0m/parrot6 0.17.2-2+b2 amd64
+  library for processing spreadsheet documents - Python bindings
+
+[32mr-bioc-dada2[0m/parrot6 1.26.0+dfsg-1 amd64
+  sample inference from amplicon sequencing data
+
+[32mr-cran-rdpack[0m/parrot6 2.4-1 all
+  GNU R update and manipulate Rd documentation objects
+
+[32mrdesktop[0m/parrot6 1.9.0-2+b1 amd64
+  RDP client for Windows NT/2000 Terminal Server and Windows Servers
+
+[32mrdp-alignment[0m/parrot6 1.2.0-8 all
+  Ribosomal Database Project (RDP) alignment tools package
+
+[32mrdp-classifier[0m/parrot6 2.10.2-6 all
+  extensible sequence classifier for fungal lsu, bacterial and archaeal 16s
+
+[32mrdp-classifier-doc[0m/parrot6 2.10.2-6 all
+  documentation and examples for rdp-classifier
+
+[32mrdp-readseq[0m/parrot6 2.0.2-9 all
+  Ribosomal Database Project (RDP) sequence reading and writing
+
+[32mrecan[0m/parrot6 0.1.5+dfsg-2 all
+  genetic distance plotting for recombination events analysis
+
+[32mremmina[0m/parrot6,now 1.4.29+dfsg-1 amd64 [installed,automatic]
+  GTK+ Remote Desktop Client
+
+[32mremmina-common[0m/parrot6,now 1.4.29+dfsg-1 all [installed,automatic]
+  Common files for Remmina
+
+[32mremmina-dev[0m/parrot6 1.4.29+dfsg-1 amd64
+  Headers for Remmina
+
+[32mremmina-plugin-exec[0m/parrot6 1.4.29+dfsg-1 amd64
+  EXEC plugin for Remmina
+
+[32mremmina-plugin-kiosk[0m/parrot6 1.4.29+dfsg-1 amd64
+  Kiosk plugin for Remmina
+
+[32mremmina-plugin-kwallet[0m/parrot6 1.4.29+dfsg-1 amd64
+  KWallet plugin for Remmina
+
+[32mremmina-plugin-python[0m/parrot6 1.4.29+dfsg-1 amd64
+  Python support for Remmina
+
+[32mremmina-plugin-rdp[0m/parrot6,now 1.4.29+dfsg-1 amd64 [installed,automatic]
+  RDP plugin for Remmina
+
+[32mremmina-plugin-secret[0m/parrot6,now 1.4.29+dfsg-1 amd64 [installed,automatic]
+  Secret plugin for Remmina
+
+[32mremmina-plugin-vnc[0m/parrot6,now 1.4.29+dfsg-1 amd64 [installed,automatic]
+  VNC plugin for Remmina
+
+[32mremmina-plugin-www[0m/parrot6 1.4.29+dfsg-1 amd64
+  WWW plugin for Remmina
+
+[32mremmina-plugin-x2go[0m/parrot6 1.4.29+dfsg-1 amd64
+  X2Go plugin for Remmina
+
+[32mremote-logon-config-agent[0m/parrot6 0.10-1 all
+  Retrieve host and session information from remote broker servers
+
+[32mremote-logon-service[0m/parrot6 1.0.2.90-4 amd64
+  DBus service for tracking available remote logon servers
+
+[32mros-mk[0m/parrot6 1.15.8-3 all
+  Robot OS make file helpers
+
+[32mruby-omniauth-wordpress[0m/parrot6 0.2.2-2 all
+  Wordpress strategy for OmniAuth
+
+[32mtexlive-publishers[0m/parrot6 2022.20230122-4 all
+  TeX Live: Publisher styles, theses, etc.
+
+[32mufo-filters[0m/parrot6 0.16.0.159.g483ce16-1+b1 amd64
+  Set of plugins for ufo-core - runtime
+
+[32mvinagre[0m/parrot6 3.22.0-8.1 amd64
+  remote desktop client for the GNOME Desktop
+
+[32mwinpr-utils[0m/parrot6 2.10.0+dfsg1-1 amd64
+  Windows Portable Runtime library command line utilities
+
+[32mwinpr3-utils[0m/parrot6-backports 3.10.3+dfsg-1~bpo12+1 amd64
+  Windows Portable Runtime library command line utilities
+
+[32mwordplay[0m/parrot6 8.0-1 amd64
+  anagram generator
+
+[32mwordpress[0m/parrot6,parrot6-security 6.1.6+dfsg1-0+deb12u1 all
+  weblog manager
+
+[32mwordpress-l10n[0m/parrot6,parrot6-security 6.1.6+dfsg1-0+deb12u1 all
+  weblog manager - language files
+
+[32mwordpress-plugin-http-authentication[0m/parrot6 4.6-2 all
+  weblog manager (HTTP Authentication Plugin)
+
+[32mwordpress-shibboleth[0m/parrot6 1.8-1.1 all
+  Shibboleth plugin for WordPress
+
+[32mwordpress-theme-twentytwentyone[0m/parrot6,parrot6-security 6.1.6+dfsg1-0+deb12u1 all
+  weblog manager - twentytwentyone theme files
+
+[32mwordpress-theme-twentytwentythree[0m/parrot6,parrot6-security 6.1.6+dfsg1-0+deb12u1 all
+  weblog manager - twentytwentythree theme files
+
+[32mwordpress-theme-twentytwentytwo[0m/parrot6,parrot6-security 6.1.6+dfsg1-0+deb12u1 all
+  weblog manager - twentytwentytwo theme files
+
+[32mwordpress-xrds-simple[0m/parrot6 1.2-1.1 all
+  XRDS-Simple plugin for WordPress
+
+[32mwp2latex[0m/parrot6 3.112+ds-1 amd64
+  Conversion of WordPerfect documents to LaTeX: the converter
+
+[32mwp2latex-styles[0m/parrot6 3.112+ds-1 all
+  Conversion of WordPerfect documents to LaTeX: the LaTeX style files
+
+[32mwp2x[0m/parrot6 2.5-mhi-14 amd64
+  WordPerfect 5.x documents to whatever converter
+
+[32mwpd2epub[0m/parrot6 0.9.6-3 amd64
+  WordPerfect document to EPUB converter
+
+[32mwpd2odt[0m/parrot6 0.9.6-3 amd64
+  WordPerfect to OpenDocument converter
+
+[32mwpg2odg[0m/parrot6 0.9.6-3 amd64
+  WordPerfect Graphics to OpenDocument converter
+
+[32mxmlcopyeditor[0m/parrot6 1.3.0.0-1.1+b2 amd64
+  fast, free, validating XML editor
+
+[32mxorgxrdp[0m/parrot6 1:0.9.19-1 amd64
+  Remote Desktop Protocol (RDP) modules for X.org
+
+[32mxrdp[0m/parrot6 0.9.21.1-1 amd64
+  Remote Desktop Protocol (RDP) server
+
+[32myoutube-dl[0m/parrot6 2021.12.17-2 all
+  download videos from YouTube and other sites (transitional package)
+
+[32myt-dlp[0m/parrot6-backports,now 2025.04.30-1~bpo12+1 all [installed,automatic]
+  downloader of videos from YouTube and other sites
+
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mq[Kapt install freerdp
+freerdp2-dev            freerdp2-x11            freerdp3-proxy-modules  freerdp3-wayland        
+freerdp2-shadow-x11     freerdp3-dev            freerdp3-sdl            freerdp3-x11            
+freerdp2-wayland        freerdp3-proxy          freerdp3-shadow-x11     
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install freerdp
+freerdp2-dev            freerdp2-x11            freerdp3-proxy-modules  freerdp3-wayland        
+freerdp2-shadow-x11     freerdp3-dev            freerdp3-sdl            freerdp3-x11            
+freerdp2-wayland        freerdp3-proxy          freerdp3-shadow-x11     
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install freerdp
+freerdp2-dev            freerdp2-x11            freerdp3-proxy-modules  freerdp3-wayland        
+freerdp2-shadow-x11     freerdp3-dev            freerdp3-sdl            freerdp3-x11            
+freerdp2-wayland        freerdp3-proxy          freerdp3-shadow-x11     
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install freerdp3-
+freerdp3-dev            freerdp3-proxy-modules  freerdp3-shadow-x11     freerdp3-x11            
+freerdp3-proxy          freerdp3-sdl            freerdp3-wayland        
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install freerdp3-
+freerdp3-dev            freerdp3-proxy-modules  freerdp3-shadow-x11     freerdp3-x11            
+freerdp3-proxy          freerdp3-sdl            freerdp3-wayland        
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install freerdp3-x11
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  libfreerdp-client3-3 libfreerdp3-3 liburiparser1 libwinpr3-3
+The following NEW packages will be installed:
+  freerdp3-x11 libfreerdp-client3-3 libfreerdp3-3 liburiparser1 libwinpr3-3
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,534 kB of archives.
+After this operation, 5,560 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+[33m0% [Working][0m[33m0% [Connecting to deb.parrot.sh][0m                                Get:1 https://deb.parrot.sh/parrot lory/main amd64 liburiparser1 amd64 0.9.7+dfsg-2 [43.8 kB]
+[33m0% [1 liburiparser1 0 B/43.8 kB 0%][0m[33m                                   6% [Working][0m            Get:2 https://deb.parrot.sh/parrot lory-backports/main amd64 libwinpr3-3 amd64 3.10.3+dfsg-1~bpo12+1 [352 kB]
+[33m6% [2 libwinpr3-3 0 B/352 kB 0%][0m[33m                                29% [Waiting for headers][0m                         Get:3 https://deb.parrot.sh/parrot lory-backports/main amd64 libfreerdp3-3 amd64 3.10.3+dfsg-1~bpo12+1 [744 kB]
+[33m29% [3 libfreerdp3-3 0 B/744 kB 0%][0m[33m                                   71% [Waiting for headers][0m                         Get:4 https://deb.parrot.sh/parrot lory-backports/main amd64 libfreerdp-client3-3 amd64 3.10.3+dfsg-1~bpo12+1 [280 kB]
+[33m71% [4 libfreerdp-client3-3 0 B/280 kB 0%][0m[33m                                          90% [Waiting for headers][0m                         Get:5 https://deb.parrot.sh/parrot lory-backports/main amd64 freerdp3-x11 amd64 3.10.3+dfsg-1~bpo12+1 [114 kB]
+[33m90% [5 freerdp3-x11 0 B/114 kB 0%][0m[33m                                  100% [Working][0m              Fetched 1,534 kB in 2s (954 kB/s)
+
+7[0;21r8[1ASelecting previously unselected package liburiparser1:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 364842 files and directories currently installed.)
+Preparing to unpack .../liburiparser1_0.9.7+dfsg-2_amd64.deb ...
+7[22;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................] 87[22;0f[42m[30mProgress: [  5%][49m[39m [####....................................................................................................] 8Unpacking liburiparser1:amd64 (0.9.7+dfsg-2) ...
+7[22;0f[42m[30mProgress: [ 10%][49m[39m [#########...............................................................................................] 8Selecting previously unselected package libwinpr3-3:amd64.
+Preparing to unpack .../libwinpr3-3_3.10.3+dfsg-1~bpo12+1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 14%][49m[39m [##############..........................................................................................] 8Unpacking libwinpr3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 19%][49m[39m [###################.....................................................................................] 8Selecting previously unselected package libfreerdp3-3:amd64.
+Preparing to unpack .../libfreerdp3-3_3.10.3+dfsg-1~bpo12+1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 24%][49m[39m [########################................................................................................] 8Unpacking libfreerdp3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 29%][49m[39m [#############################...........................................................................] 8Selecting previously unselected package libfreerdp-client3-3:amd64.
+Preparing to unpack .../libfreerdp-client3-3_3.10.3+dfsg-1~bpo12+1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 33%][49m[39m [##################################......................................................................] 8Unpacking libfreerdp-client3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 38%][49m[39m [#######################################.................................................................] 8Selecting previously unselected package freerdp3-x11.
+Preparing to unpack .../freerdp3-x11_3.10.3+dfsg-1~bpo12+1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 43%][49m[39m [############################################............................................................] 8Unpacking freerdp3-x11 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 48%][49m[39m [#################################################.......................................................] 8Setting up liburiparser1:amd64 (0.9.7+dfsg-2) ...
+7[22;0f[42m[30mProgress: [ 52%][49m[39m [######################################################..................................................] 87[22;0f[42m[30mProgress: [ 57%][49m[39m [###########################################################.............................................] 8Setting up libwinpr3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 62%][49m[39m [################################################################........................................] 87[22;0f[42m[30mProgress: [ 67%][49m[39m [#####################################################################...................................] 8Setting up libfreerdp3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 71%][49m[39m [##########################################################################..............................] 87[22;0f[42m[30mProgress: [ 76%][49m[39m [###############################################################################.........................] 8Setting up libfreerdp-client3-3:amd64 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 81%][49m[39m [####################################################################################....................] 87[22;0f[42m[30mProgress: [ 86%][49m[39m [#########################################################################################...............] 8Setting up freerdp3-x11 (3.10.3+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 90%][49m[39m [##############################################################################################..........] 87[22;0f[42m[30mProgress: [ 95%][49m[39m [###################################################################################################.....] 8Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for libc-bin (2.36-9+deb12u10) ...
+
+7[0;22r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mxfreerdp /v:$ip /uO[K:"administrator" /p:"" 
+[?2004lbash: xfreerdp: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mxfreerdp /v:$ip /u:"administrator" /p:"" [1@3
+[?2004l[17:12:15:695] [4267:000010ac] [WARN][com.freerdp.crypto] - [verify_cb]: Certificate verification failure 'self-signed certificate (18)' at stack position 0
+[17:12:15:695] [4267:000010ac] [WARN][com.freerdp.crypto] - [verify_cb]: CN = Explosion
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [x509_utils_from_pem]: BIO_new failed for certificate
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: @           WARNING: CERTIFICATE NAME MISMATCH!           @
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: The hostname used for this connection (10.129.197.6:3389) 
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: does not match the name given in the certificate:
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: Common Name (CN):
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: 	Explosion
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_certificate_name_mismatch_error]: A valid certificate for the wrong name should NOT be trusted!
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: The host key for 10.129.197.6:3389 has changed
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: It is also possible that a host key has just been changed.
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: The fingerprint for the host key sent by the remote host is 2c:23:1d:ef:e0:db:44:23:a5:5f:fa:97:46:9c:7e:2a:b7:31:24:bf:c3:89:d0:48:e3:01:d2:88:ac:bd:6d:d8
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: Please contact your system administrator.
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: Add correct host key in /root/.config/freerdp/server/10.129.197.6_3389.pem to get rid of this message.
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: Host key for 10.129.197.6 has changed and you have requested strict checking.
+[17:12:15:697] [4267:000010ac] [ERROR][com.freerdp.crypto] - [tls_print_new_certificate_warn]: Host key verification failed.
+Certificate details for 10.129.197.6:3389 (RDP-Server):
+	Common Name: Explosion
+	Subject:     CN = Explosion
+	Issuer:      CN = Explosion
+	Valid from:  May 30 20:43:32 2025 GMT
+	Valid to:    Nov 29 20:43:32 2025 GMT
+	Thumbprint:  2c:23:1d:ef:e0:db:44:23:a5:5f:fa:97:46:9c:7e:2a:b7:31:24:bf:c3:89:d0:48:e3:01:d2:88:ac:bd:6d:d8
+The above X.509 certificate could not be verified, possibly because you do not have
+the CA certificate in your certificate store, or the certificate has expired.
+Please look at the OpenSSL documentation on how to add a private CA to the store.
+Do you trust the above certificate? (Y/T/N) Y
+[17:12:20:003] [4267:000010ac] [ERROR][com.winpr.sspi.Kerberos] - [kerberos_AcquireCredentialsHandleA]: krb5_parse_name (Configuration file does not specify default realm [-1765328160])
+[17:12:20:003] [4267:000010ac] [ERROR][com.winpr.sspi.Kerberos] - [kerberos_AcquireCredentialsHandleA]: krb5_parse_name (Configuration file does not specify default realm [-1765328160])
+[17:12:22:372] [4267:000010ac] [WARN][com.freerdp.core.connection] - [rdp_client_connect_auto_detect]: expected messageChannelId=1008, got 1003
+[17:12:22:372] [4267:000010ac] [WARN][com.freerdp.core.license] - [license_read_binary_blob_data]: license binary blob::type BB_ERROR_BLOB, length=0, skipping.
+[17:12:22:613] [4267:000010ac] [WARN][com.freerdp.core.connection] - [rdp_client_connect_auto_detect]: expected messageChannelId=1008, got 1003
+[17:12:22:641] [4267:000010ac] [INFO][com.freerdp.gdi] - [gdi_init_ex]: Local framebuffer format  PIXEL_FORMAT_BGRX32
+[17:12:22:641] [4267:000010ac] [INFO][com.freerdp.gdi] - [gdi_init_ex]: Remote framebuffer format PIXEL_FORMAT_BGRA32
+[17:12:22:669] [4267:000010ac] [INFO][com.freerdp.channels.rdpsnd.client] - [rdpsnd_load_device_plugin]: [static] Loaded fake backend for rdpsnd
+[17:12:22:669] [4267:000010ac] [INFO][com.freerdp.channels.drdynvc.client] - [dvcman_load_addin]: Loading Dynamic Virtual Channel ainput
+[17:12:22:669] [4267:000010ac] [INFO][com.freerdp.channels.drdynvc.client] - [dvcman_load_addin]: Loading Dynamic Virtual Channel rdpgfx
+[17:12:22:669] [4267:000010ac] [INFO][com.freerdp.channels.drdynvc.client] - [dvcman_load_addin]: Loading Dynamic Virtual Channel rdpsnd
+[17:12:23:444] [4267:000010bf] [INFO][com.freerdp.channels.rdpsnd.client] - [rdpsnd_load_device_plugin]: [dynamic] Loaded fake backend for rdpsnd
+[17:12:23:810] [4267:000010ac] [INFO][com.freerdp.client.x11] - [xf_logon_error_info]: Logon Error Info LOGON_FAILED_OTHER [LOGON_MSG_SESSION_CONTINUE]
+[17:13:23:093] [4267:000010ab] [ERROR][com.freerdp.core] - [freerdp_abort_connect_context]: ERRCONNECT_CONNECT_CANCELLED [0x0002000B]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/explosion[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+
+Script done on 2025-05-31 17:13:31-04:00 [COMMAND_EXIT_CODE="0"]

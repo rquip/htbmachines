@@ -1,0 +1,316 @@
+Script started on 2025-06-07 13:30:24-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="133" LINES="29"]
+[?2004h[0;31m┌─[[0;39mryebread[01;33m@[01;96mparrot[0;31m]─[[0;32m~/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m$[0msudo su
+[?2004l[sudo] password for ryebread: 
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mip=10.129.228.37
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mping $ip
+[?2004lPING 10.129.228.37 (10.129.228.37) 56(84) bytes of data.
+64 bytes from 10.129.228.37: icmp_seq=1 ttl=63 time=74.3 ms
+64 bytes from 10.129.228.37: icmp_seq=2 ttl=63 time=75.7 ms
+64 bytes from 10.129.228.37: icmp_seq=3 ttl=63 time=74.4 ms
+64 bytes from 10.129.228.37: icmp_seq=4 ttl=63 time=77.1 ms
+64 bytes from 10.129.228.37: icmp_seq=5 ttl=63 time=77.0 ms
+64 bytes from 10.129.228.37: icmp_seq=6 ttl=63 time=76.7 ms
+64 bytes from 10.129.228.37: icmp_seq=7 ttl=63 time=76.5 ms
+64 bytes from 10.129.228.37: icmp_seq=8 ttl=63 time=79.2 ms
+^C
+--- 10.129.228.37 ping statistics ---
+8 packets transmitted, 8 received, 0% packet loss, time 7010ms
+rtt min/avg/max/mdev = 74.326/76.365/79.151/1.467 ms
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -T4 -p- --min--[Kparallelism 100 --max-retries 1 -p[KPn -n $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-07 13:33 EDT
+Nmap scan report for 10.129.228.37
+Host is up (0.079s latency).
+Not shown: 65534 closed tcp ports (reset)
+PORT    STATE SERVICE
+873/tcp open  rsync
+
+Nmap done: 1 IP address (1 host up) scanned in 20.91 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mnmap -sV -p 873 $ip
+[?2004lStarting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-07 13:34 EDT
+Nmap scan report for 10.129.228.37
+Host is up (0.075s latency).
+
+PORT    STATE SERVICE VERSION
+873/tcp open  rsync   (protocol version 31)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 11.03 seconds
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mrsync -av  --[K[K[K[K --list-only rsync:://[K[K[K//$ip/
+[?2004lpublic         	Anonymous Share
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mrsync -av --list-only rsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[C[C[C[C[C[C[C[C[C[C[C[C ./local_copy/
+[?2004lpublic         	Anonymous Share
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls -la
+[?2004ltotal 4
+drwxr-xr-x 1 ryebread ryebread   20 Jun  7 13:30 [0m[01;34m.[0m
+drwxr-xr-x 1 ryebread ryebread  110 Jun  7 13:30 [01;34m..[0m
+-rw-r--r-- 1 ryebread ryebread 3830 Jun  7 13:40 output.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd .
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0ml [Ks -la
+[?2004ltotal 8
+drwxr-xr-x 1 ryebread ryebread   20 Jun  7 13:30 [0m[01;34m.[0m
+drwxr-xr-x 1 ryebread ryebread  110 Jun  7 13:30 [01;34m..[0m
+-rw-r--r-- 1 ryebread ryebread 4542 Jun  7 13:40 output.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mman rsync
+[?2004l[?1049h[22;0;0t[?1h=rsync(1)                                                  User Commands                                                  rsync(1)[m
+[m
+[1mNAME[0m[m
+       rsync - a fast, versatile, remote (and local) file-copying tool[m
+[m
+[1mSYNOPSIS[0m[m
+       Local:[m
+           rsync [OPTION...] SRC... [DEST][m
+[m
+       Access via remote shell:[m
+           Pull:[m
+               rsync [OPTION...] [USER@]HOST:SRC... [DEST][m
+           Push:[m
+               rsync [OPTION...] SRC... [USER@]HOST:DEST[m
+[m
+       Access via rsync daemon:[m
+           Pull:[m
+               rsync [OPTION...] [USER@]HOST::SRC... [DEST][m
+               rsync [OPTION...] rsync://[USER@]HOST[:PORT]/SRC... [DEST][m
+           Push:[m
+               rsync [OPTION...] SRC... [USER@]HOST::DEST[m
+               rsync [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/DEST)[m
+[m
+       Usages with just one SRC arg and no DEST arg will list the source files instead of copying.[m
+[m
+       The   online   version   of   this  manpage  (that  includes  cross-linking  of  topics)  is  available  at  https://down‐[m
+       load.samba.org/pub/rsync/rsync.1.[m
+[m
+[7m Manual page rsync(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mDESCRIPTION[0m[m
+[7m Manual page rsync(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync is a fast and extraordinarily versatile file copying tool.  It can copy locally, to/from another host over  any  re‐[m
+[7m Manual page rsync(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mote shell, or to/from a remote rsync daemon.  It offers a large number of options that control every aspect of its behav‐[m
+[7m Manual page rsync(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       ior and permit very flexible specification of the set of files to be copied.  It is famous for  its  delta-transfer  algo‐[m
+[7m Manual page rsync(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rithm, which reduces the amount of data sent over the network by sending only the differences between the source files and[m
+[7m Manual page rsync(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the existing files in the destination.  Rsync is widely used for backups and mirroring and as an improved copy command for[m
+[7m Manual page rsync(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       everyday use.[m
+[7m Manual page rsync(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync  finds files that need to be transferred using a "quick check" algorithm (by default) that looks for files that have[m
+[7m Manual page rsync(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[29;1H[K[7m Manual page rsync(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM           rsync [OPTION...] SRC... [DEST][m
+[29;1H[K[7m Manual page rsync(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       Local:[m
+[29;1H[K[7m Manual page rsync(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mSYNOPSIS[0m[m
+[29;1H[K[7m Manual page rsync(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[29;1H[K[7m Manual page rsync(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM       rsync - a fast, versatile, remote (and local) file-copying tool[m
+[29;1H[K[7m Manual page rsync(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[1mNAME[0m[m
+[29;1H[K[7m Manual page rsync(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HM[m
+[29;1H[K[7m Manual page rsync(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[HMrsync(1)                                                  User Commands                                                  rsync(1)[m
+[29;1H[K[7m Manual page rsync(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page rsync(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page rsync(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KAA[K[K[7m Manual page rsync(1) line 1 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mDESCRIPTION[0m[m
+[7m Manual page rsync(1) line 2 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync is a fast and extraordinarily versatile file copying tool.  It can copy locally, to/from another host over  any  re‐[m
+[7m Manual page rsync(1) line 3 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mote shell, or to/from a remote rsync daemon.  It offers a large number of options that control every aspect of its behav‐[m
+[7m Manual page rsync(1) line 4 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       ior and permit very flexible specification of the set of files to be copied.  It is famous for  its  delta-transfer  algo‐[m
+[7m Manual page rsync(1) line 5 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rithm, which reduces the amount of data sent over the network by sending only the differences between the source files and[m
+[7m Manual page rsync(1) line 6 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the existing files in the destination.  Rsync is widely used for backups and mirroring and as an improved copy command for[m
+[7m Manual page rsync(1) line 7 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       everyday use.[m
+[7m Manual page rsync(1) line 8 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 9 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync  finds files that need to be transferred using a "quick check" algorithm (by default) that looks for files that have[m
+[7m Manual page rsync(1) line 10 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       changed in size or in last-modified time.  Any changes in the other preserved attributes (as  requested  by  options)  are[m
+[7m Manual page rsync(1) line 11 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       made on the destination file directly when the quick check indicates that the file's data does not need to be updated.[m
+[7m Manual page rsync(1) line 12 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 13 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Some of the additional features of rsync are:[m
+[7m Manual page rsync(1) line 14 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 15 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      support for copying links, devices, owners, groups, and permissions[m
+[7m Manual page rsync(1) line 16 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 17 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      exclude and exclude-from options similar to GNU tar[m
+[7m Manual page rsync(1) line 18 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 19 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      a CVS exclude mode for ignoring the same files that CVS would ignore[m
+[7m Manual page rsync(1) line 20 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 21 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      can use any transparent remote shell, including ssh or rsh[m
+[7m Manual page rsync(1) line 22 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 23 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      does not require super-user privileges[m
+[7m Manual page rsync(1) line 24 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 25 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      pipelining of file transfers to minimize latency costs[m
+[7m Manual page rsync(1) line 26 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 27 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       o      support for anonymous or authenticated rsync daemons (ideal for mirroring)[m
+[7m Manual page rsync(1) line 28 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 29 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mGENERAL[0m[m
+[7m Manual page rsync(1) line 30 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync  copies files either to or from a remote host, or locally on the current host (it does not support copying files be‐[m
+[7m Manual page rsync(1) line 31 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tween two remote hosts).[m
+[7m Manual page rsync(1) line 32 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 33 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       There are two different ways for rsync to contact a remote system: using a remote-shell program as the transport (such  as[m
+[7m Manual page rsync(1) line 34 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       ssh  or  rsh)  or  contacting an rsync daemon directly via TCP.  The remote-shell transport is used whenever the source or[m
+[7m Manual page rsync(1) line 35 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       destination path contains a single colon (:) separator after a host specification.  Contacting an  rsync  daemon  directly[m
+[7m Manual page rsync(1) line 36 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       happens  when the source or destination path contains a double colon (::) separator after a host specification, OR when an[m
+[7m Manual page rsync(1) line 37 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       rsync:// URL is specified (see also the USING RSYNC-DAEMON FEATURES VIA A REMOTE-SHELL CONNECTION section for an exception[m
+[7m Manual page rsync(1) line 38 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       to this latter rule).[m
+[7m Manual page rsync(1) line 39 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 40 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       As  a  special  case,  if a single source arg is specified without a destination, the files are listed in an output format[m
+[7m Manual page rsync(1) line 41 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       similar to "[1mls[0m [1m-l[0m".[m
+[7m Manual page rsync(1) line 42 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 43 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       As expected, if neither the source or destination path specify a remote host,  the  copy  occurs  locally  (see  also  the[m
+[7m Manual page rsync(1) line 44 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       [1m--list-only[0m option).[m
+[7m Manual page rsync(1) line 45 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 46 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Rsync  refers  to the local side as the client and the remote side as the server.  Don't confuse server with an rsync dae‐[m
+[7m Manual page rsync(1) line 47 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       mon.  A daemon is always a server, but a server can be either a daemon or a remote-shell spawned process.[m
+[7m Manual page rsync(1) line 48 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 49 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mSETUP[0m[m
+[7m Manual page rsync(1) line 50 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       See the file README.md for installation instructions.[m
+[7m Manual page rsync(1) line 51 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 52 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Once installed, you can use rsync to any machine that you can access via a remote shell (as well as some that you can  ac‐[m
+[7m Manual page rsync(1) line 53 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       cess  using the rsync daemon-mode protocol).  For remote transfers, a modern rsync uses ssh for its communications, but it[m
+[7m Manual page rsync(1) line 54 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       may have been configured to use a different remote shell by default, such as rsh or remsh.[m
+[7m Manual page rsync(1) line 55 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 56 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       You can also specify any remote shell you like, either by using the [1m-e[0m command line option, or by  setting  the  [1mRSYNC_RSH[0m[m
+[7m Manual page rsync(1) line 57 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       environment variable.[m
+[7m Manual page rsync(1) line 58 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 59 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Note that rsync must be installed on both the source and destination machines.[m
+[7m Manual page rsync(1) line 60 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 61 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[1mUSAGE[0m[m
+[7m Manual page rsync(1) line 62 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       You use rsync in the same way you use rcp.  You must specify a source and a destination, one of which may be remote.[m
+[7m Manual page rsync(1) line 63 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 64 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Perhaps the best way to explain the syntax is with some examples:[m
+[7m Manual page rsync(1) line 65 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 66 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -t *.c foo:src/[m
+[7m Manual page rsync(1) line 67 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 68 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This would transfer all files matching the pattern [1m*.c[0m from the current directory to the directory src on the machine foo.[m
+[7m Manual page rsync(1) line 69 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       If any of the files already exist on the remote system then the rsync remote-update protocol is used to update the file by[m
+[7m Manual page rsync(1) line 70 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       sending  only  the differences in the data.  Note that the expansion of wildcards on the command-line ([1m*.c[0m) into a list of[m
+[7m Manual page rsync(1) line 71 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       files is handled by the shell before it runs rsync and not by rsync itself (exactly the same as all other Posix-style pro‐[m
+[7m Manual page rsync(1) line 72 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       grams).[m
+[7m Manual page rsync(1) line 73 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 74 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -avz foo:src/bar /data/tmp[m
+[7m Manual page rsync(1) line 75 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 76 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       This  would  recursively transfer all files from the directory src/bar on the machine foo into the /data/tmp/bar directory[m
+[7m Manual page rsync(1) line 77 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       on the local machine.  The files are transferred in archive mode, which ensures that symbolic links, devices,  attributes,[m
+[7m Manual page rsync(1) line 78 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       permissions, ownerships, etc. are preserved in the transfer.  Additionally, compression will be used to reduce the size of[m
+[7m Manual page rsync(1) line 79 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       data portions of the transfer.[m
+[7m Manual page rsync(1) line 80 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 81 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -avz foo:src/bar/ /data/tmp[m
+[7m Manual page rsync(1) line 82 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 83 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       A trailing slash on the source changes this behavior to avoid creating an additional directory level at  the  destination.[m
+[7m Manual page rsync(1) line 84 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       You  can think of a trailing / on a source as meaning "copy the contents of this directory" as opposed to "copy the direc‐[m
+[7m Manual page rsync(1) line 85 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       tory by name", but in both cases the attributes of the containing directory are transferred to the containing directory on[m
+[7m Manual page rsync(1) line 86 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       the destination.  In other words, each of the following commands copies the files in the same way, including their setting[m
+[7m Manual page rsync(1) line 87 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       of the attributes of /dest/foo:[m
+[7m Manual page rsync(1) line 88 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 89 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -av /src/foo /dest[m
+[7m Manual page rsync(1) line 90 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -av /src/foo/ /dest/foo[m
+[7m Manual page rsync(1) line 91 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 92 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Note also that host and module references don't require a trailing slash to copy the contents of  the  default  directory.[m
+[7m Manual page rsync(1) line 93 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       For example, both of these copy the remote directory's contents into "/dest":[m
+[7m Manual page rsync(1) line 94 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 95 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -av host: /dest[m
+[7m Manual page rsync(1) line 96 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K           rsync -av host::module /dest[m
+[7m Manual page rsync(1) line 97 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 98 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       You  can  also  use rsync in local-only mode, where both the source and destination don't have a ':' in the name.  In this[m
+[7m Manual page rsync(1) line 99 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       case it behaves like an improved copy command.[m
+[7m Manual page rsync(1) line 100 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 101 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K       Finally, you can list all the (listable) modules available from a particular rsync daemon by leaving off the module name:[m
+[7m Manual page rsync(1) line 102 (press h for help or q to quit)[27m[K[K [KESCESC[KOO[KBB[K[m
+[7m Manual page rsync(1) line 103 (press h for help or q to quit)[27m[K[K[?1l>[?1049l[23;0;0t[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mdancing[0m  [01;34mexplosion[0m  [01;34mfawn[0m  [01;34mmeow[0m  [01;34mmongod[0m  [01;34mpreignition[0m  [01;34mredeemer[0m  [01;34msynced[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  [01;34mhtb[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mprojecteuler[0m  [01;34mPublic[0m  [01;34mSecLists[0m  [01;34mTemplates[0m  [01;34mVideos[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mryebread[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd ..
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;36mbin[0m   [01;34mdev[0m  [01;34mhome[0m        [01;36minitrd.img.old[0m  [01;36mlib64[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msrv[0m  [30;42mtmp[0m  [01;34mvar[0m      [01;36mvmlinuz.old[0m
+[01;34mboot[0m  [01;34metc[0m  [01;36minitrd.img[0m  [01;36mlib[0m             [01;34mmedia[0m  [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msys[0m  [01;34musr[0m  [01;36mvmlinuz[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/[0;31m]
+[0;31m└──╼ [0m[01;33m#[0m ls -la
+[?2004ltotal 36
+drwxr-xr-x   1 root root  216 May 20 21:39 [0m[01;34m.[0m
+drwxr-xr-x   1 root root  216 May 20 21:39 [01;34m..[0m
+lrwxrwxrwx   1 root root    7 Jan 28 11:34 [01;36mbin[0m -> [01;34musr/bin[0m
+drwxr-xr-x   1 root root  488 Jun  6 16:09 [01;34mboot[0m
+drwxr-xr-x  19 root root 3720 Jun  7 13:24 [01;34mdev[0m
+drwxr-xr-x   1 root root 4566 Jun  7 13:23 [01;34metc[0m
+drwxr-xr-x   1 root root   16 May 20 21:23 [01;34mhome[0m
+lrwxrwxrwx   1 root root   29 May 20 21:39 [01;36minitrd.img[0m -> boot/initrd.img-6.12.12-amd64
+lrwxrwxrwx   1 root root   33 May 20 21:39 [01;36minitrd.img.old[0m -> boot/initrd.img-6.11+parrot-amd64
+lrwxrwxrwx   1 root root    7 Jan 28 11:34 [01;36mlib[0m -> [01;34musr/lib[0m
+lrwxrwxrwx   1 root root    9 Jan 28 11:34 [01;36mlib64[0m -> [01;34musr/lib64[0m
+drwxr-xr-x   1 root root    0 Jan 28 11:34 [01;34mmedia[0m
+drwxr-xr-x   1 root root    0 Jan 28 11:34 [01;34mmnt[0m
+drwxr-xr-x   1 root root   18 Jan 28 11:34 [01;34mopt[0m
+dr-xr-xr-x 286 root root    0 Jun  7 13:23 [01;34mproc[0m
+drwxr-xr-x   1 root root  402 Jun  7 13:42 [01;34mroot[0m
+drwxr-xr-x  35 root root  900 Jun  7 13:23 [01;34mrun[0m
+lrwxrwxrwx   1 root root    8 Jan 28 11:34 [01;36msbin[0m -> [01;34musr/sbin[0m
+drwxr-xr-x   1 root root    0 Jan 28 11:34 [01;34msrv[0m
+dr-xr-xr-x  13 root root    0 Jun  7 13:23 [01;34msys[0m
+drwxrwxrwt  16 root root  340 Jun  7 13:26 [30;42mtmp[0m
+drwxr-xr-x   1 root root   94 Jan 28 11:34 [01;34musr[0m
+drwxr-xr-x   1 root root  106 May 20 21:27 [01;34mvar[0m
+lrwxrwxrwx   1 root root   26 May 20 21:39 [01;36mvmlinuz[0m -> boot/vmlinuz-6.12.12-amd64
+lrwxrwxrwx   1 root root   30 May 20 21:39 [01;36mvmlinuz.old[0m -> boot/vmlinuz-6.11+parrot-amd64
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd /home/ryebread/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mDesktop[0m  [01;34mDocuments[0m  [01;34mDownloads[0m  [01;34mhtb[0m  [01;34mMusic[0m  [01;34mPictures[0m  [01;34mprojecteuler[0m  [01;34mPublic[0m  [01;34mSecLists[0m  [01;34mTemplates[0m  [01;34mVideos[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd htb/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004l[0m[01;34mdancing[0m  [01;34mexplosion[0m  [01;34mfawn[0m  [01;34mmeow[0m  [01;34mmongod[0m  [01;34mpreignition[0m  [01;34mredeemer[0m  [01;34msynced[0m
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcd synced/
+[?2004l[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mlscd synced/[C[C[C[C[C[Cls[Kcd htb/ls[Kcd /home/ryebread/[C[C[C[C[C[Cls[Kcd ..[3Plscd ..[3Plscd ..[3Plscd ..[3Plsman rsync[C[C[C[C[C[C[3Pls -la[Kcd .ls -la[Krsync -av rsync://$ip/ ./local_copy/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2P--list-only rsync://$ip/[C[C[C[C[C[C[15Pnmap -sV -p 873 $ip[C[C[C[C[C[Crsync -av --list-only rsync://$ip/[C[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[1Prsync://$ip/[C[C[C[C[C[C[C[C[C[C[C[C ./
+[?2004lpublic         	Anonymous Share
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004loutput.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mlsrsync -av rsync://$ip/ ./[K[K[Kpublic ./
+[?2004lreceiving incremental file list
+./
+flag.txt
+
+sent 50 bytes  received 161 bytes  32.46 bytes/sec
+total size is 33  speedup is 0.16
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mls
+[?2004lflag.txt  output.log
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mcat flag.txt 
+[?2004l72eaf5344ebb84908ae543a719830519
+[?2004h[0;31m┌─[[01;31mroot[01;33m@[01;96mparrot[0;31m]─[[0;32m/home/ryebread/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m#[0mexit
+[?2004lexit
+[?2004h[0;31m┌─[[0;39mryebread[01;33m@[01;96mparrot[0;31m]─[[0;32m~/htb/synced[0;31m]
+[0;31m└──╼ [0m[01;33m$[0mexit
+[?2004lexit
+
+Script done on 2025-06-07 13:45:34-04:00 [COMMAND_EXIT_CODE="0"]
